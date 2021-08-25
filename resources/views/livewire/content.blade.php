@@ -23,8 +23,8 @@
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
         <x-poli-ibu-svg />
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Poli Ibu
+        <button class="btn btn-link collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
+          <a href="{{ url('poli-ibu') }}" class="">Poli Ibu</a>
         </button>
       </h5>
     </div>

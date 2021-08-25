@@ -29,8 +29,8 @@
 
                         <x-slot name="content">
                             <!-- Team Settings -->
-                            <x-jet-dropdown-link href="{{ route('informasi-obat.index') }}">
-                                {{ __('Pemasukan Obat Alkes') }}
+                            <x-jet-dropdown-link href="{{ route('proseskehamilan.index') }}">
+                                {{ __('Proses Kehamilan Pasien') }}
                             </x-jet-dropdown-link>
                         </x-slot>
                     </x-jet-dropdown>

@@ -7,6 +7,7 @@ use App\Http\Controllers\gudangfarmasi\LaporanobatController;
 use App\Http\Controllers\gudangfarmasi\ObatController;
 use App\Http\Controllers\poliibu\InputdataController;
 use App\Http\Controllers\poliibu\InputpasienController;
+use App\Http\Controllers\poliibu\ProseskehamilanController;
 use App\Http\Controllers\poliibu\RiwayatkehamilanController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,5 +65,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         //Route Riwayat Kehamilan Pasien Ibu
         Route::resource('riwayatkehamilan', RiwayatkehamilanController::class);
         Route::get('getPasien', [RiwayatkehamilanController::class, 'getDataPasien']);
+        Route::get('riwayatkehamilan-delete', [RiwayatkehamilanController::class, 'hapus'])->name('riwayatkehamilan.hapus');
+
+        //Route Proses Kehamilan Pasien Ibu
+        Route::resource('proseskehamilan', ProseskehamilanController::class);
+        Route::get('proseskehamilan-add/{id}', [ProseskehamilanController::class,'addData'])->name('proseskehamilan.add');
+
     });
 });

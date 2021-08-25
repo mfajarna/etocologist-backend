@@ -133,6 +133,15 @@ class RiwayatkehamilanController extends Controller
         //
     }
 
+    public function hapus(Request $request)
+    {
+         $data = Riwayatkehamilan::find($request->input('id'));
+
+        if($data){
+            $data->each->delete();
+        }
+    }
+
     public function getDataPasien(Request $request)
     {
         $id = $request->input('id');

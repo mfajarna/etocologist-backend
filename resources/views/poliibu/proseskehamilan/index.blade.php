@@ -6,10 +6,9 @@
 
     <x-slot name="header">
         <x-header.header-poli-ibu-component>
-            {{ __('Riwayat Kehamilan Pasien Ibu') }}
+            {{ __('Proses Kehamilan Pasien') }}
         </x-header.header-poli-ibu-component>
     </x-slot>
-
 
     <div class="py-12 container mx-auto">
              @if (session('success'))
@@ -39,15 +38,17 @@
 
             <div class="card mt-4">
                 <div class="card-header">
-                    Table List Riwayat Pasien
+                    Table List Proses Kehamilan Pasien
                 </div>
                 <div class="card-body">
                       <div class="mb-10">
-                         <a class="btn btn-success" href="{{ route('riwayatkehamilan.create') }}" role="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="15px" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;stroke:#FFFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title>8.add</title><g id="_8.add" data-name="8.add"><circle class="cls-1" cx="12" cy="12" r="11"/><line class="cls-1" x1="12" y1="6" x2="12" y2="18"/><line class="cls-1" x1="18" y1="12" x2="6" y2="12"/></g></svg>
-                            Tambah</a>
 
-                         <button class="btn btn-success" id="button_nonaktif_all" onClick="tambahOnClick()" disabled>
+                         <button class="btn btn-success" id="buttontmbh_nonaktif_all" onClick="tambahOnClick()" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="15px" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;stroke:#FFFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title>8.add</title><g id="_8.add" data-name="8.add"><circle class="cls-1" cx="12" cy="12" r="11"/><line class="cls-1" x1="12" y1="6" x2="12" y2="18"/><line class="cls-1" x1="18" y1="12" x2="6" y2="12"/></g></svg>
+                                Tambah
+                         </button>
+
+                         <button class="btn btn-success" id="button_nonaktif_all"  disabled>
                             <svg id="i-edit" class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 1 32 32" fill="none" stroke="#FFFF" stroke-linecap="round" stroke-linejoin="round" width="15px" stroke-width="2">
                                 <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" /></svg>
                                 Ubah
@@ -91,7 +92,8 @@
             </div>
 
     </div>
-    @push('additional')
+
+     @push('additional')
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js" defer></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js" defer></script>
@@ -129,7 +131,7 @@
                     id_check.push(elm.value);
                 })
 
-               window.location.href='riwayatkehamilan/'+id_check+'/edit'
+               window.location.href='proseskehamilan-add/'+id_check
 
             }
 
@@ -197,6 +199,7 @@
                          let yangDiCheck = $("#table_data tbody .cb-child:checked");
                          let button_non_aktif_status = (yangDiCheck.length>0);
 
+                         $("#buttontmbh_nonaktif_all").prop('disabled', !button_non_aktif_status);
                          $("#button_nonaktif_all").prop('disabled', !button_non_aktif_status);
                          $("#buttonhps_nonaktif_all").prop('disabled', !button_non_aktif_status);
                     });
