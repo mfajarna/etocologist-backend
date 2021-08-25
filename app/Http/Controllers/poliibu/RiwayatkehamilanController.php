@@ -17,14 +17,17 @@ class RiwayatkehamilanController extends Controller
      */
     public function index()
     {
+        $data = $data = Riwayatkehamilan::with('ibu')->latest()->get();
         if(request()->ajax())
         {
-            $data = Riwayatkehamilan::latest()->get();
+            $data = Riwayatkehamilan::with('ibu')->latest()->get();
 
             return DataTables::of($data)->make(true);
         }
 
-        return view('poliibu.riwayatkehamilan.index');
+        return view('poliibu.riwayatkehamilan.index',[
+             'data' => $data
+        ]);
     }
 
     /**
@@ -49,6 +52,26 @@ class RiwayatkehamilanController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'id_ibu' => 'required',
+            'gpa' => 'required',
+            'jarak_kehamilan' => 'required',
+            'siklus_haid' => 'required',
+            'tinggi_badan' => 'required',
+            'kb_sebelum_hamil' => 'required',
+            'riwayat_penyakit' => 'required',
+        ],
+        [
+            'id_ibu.required' => 'Nama Pasien Ibu Tidak Boleh Kosong!',
+            'gpa.required' => 'GPA Tidak Boleh Kosong!',
+            'jarak_kehamilan.required' => 'Jarak Kehamilan Tidak Boleh Kosong!',
+            'siklus_haid.required' => 'Siklus HaidTidak Boleh Kosong!',
+            'tinggi_badan.required' => 'Tinggi Badang Tidak Boleh Kosong!',
+            'kb_sebelum_hamil.required' => 'Kb Sebelum Hamil Tidak Boleh Kosong!',
+            'riwayat_penyakit.required' => 'Riwayat Penyakit Tidak Boleh Kosong!',
+        ]);
+
         $model = new Riwayatkehamilan;
 
         $model->id_ibu = $request->id_ibu;
@@ -61,6 +84,8 @@ class RiwayatkehamilanController extends Controller
         $model->riwayat_persalinan = $request->riwayatkehamilans;
 
         $model->save();
+
+        return redirect()->route('riwayatkehamilan.index')->with('updatesuccess', 'Riwayat Kehamilan Pasien berhasil di Tambahkan!');
     }
 
     /**

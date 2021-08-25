@@ -64,7 +64,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="kb_sebelum_hamil">KB Sebelum Hamil</label>
-                            <input type="text" class="form-control" id="kb_sebelum_hamil" name="kb_sebelum_hamil" aria-describedby="kb_sebelum_hamil" placeholder="Masukan Tinggi Badan" value="{{ old('kb_sebelum_hamil') }}">
+                            <input type="text" class="form-control" id="kb_sebelum_hamil" name="kb_sebelum_hamil" aria-describedby="kb_sebelum_hamil" placeholder="Masukan KB Sebelum Hamil" value="{{ old('kb_sebelum_hamil') }}">
                             <small id="siklus_haid" class="form-text text-muted">*Kb sebelum hamil</small>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                                 </textarea>
                             </td>
                             <td>
-                                <a href="#" wire:click.prevent="removeRiwayat({{$index}})">Delete</a>
+                                <a href="#" wire:click.prevent="removeRiwayat({{$index}})">Hapus</a>
                             </td>
                         </tr>
                     @endforeach

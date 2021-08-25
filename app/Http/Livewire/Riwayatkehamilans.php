@@ -25,6 +25,7 @@ class Riwayatkehamilans extends Component
 
     public function addRiwayat ()
     {
+
         $this->riwayatkehamilans[] = ['no_riwayat' => '', 'umur_riwayat' => '', 'partus_riwayat' => '', 'cara_riwayat' => '', 'ket_riwayat' => ''];
     }
 

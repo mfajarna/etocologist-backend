@@ -39,7 +39,7 @@
 
             <div class="card mt-4">
                 <div class="card-header">
-                    Table List Data Pasien Ibu
+                    Table List Riwayat Pasien
                 </div>
                 <div class="card-body">
                       <div class="mb-10">
@@ -78,10 +78,11 @@
                         <tr align="center">
                             <th width="5%"><input type="checkbox" id="head-cb"></th>
                             <th>Nama Pasien Ibu</th>
-                            <th>Umur Pasien Ibu</th>
-                            <th>Nama Suami</th>
-                            <th>Alamat</th>
-                            <th>No Telepon</th>
+                            <th>Nama Suami Ibu</th>
+                            <th>GPA</th>
+                            <th>Siklus Haid</th>
+                            <th>Tinggi Badan</th>
+                            <th>Riwayat Penyakit</th>
                         </tr>
                     </thead>
                     </table>
@@ -108,7 +109,7 @@
                 if(confirm('Apakah anda yakin untuk menghapus?'))
                 {
                     $.ajax({
-                    url: "{{ route('inputpasien.delete') }}",
+                    url: "{{ route('riwayatkehamilan.index') }}",
                     method: "GET",
                     data:{id:id},
                     success:function(res)
@@ -128,7 +129,7 @@
                     id_check.push(elm.value);
                 })
 
-               window.location.href='inputpasien/'+id_check+'/edit'
+               window.location.href='riwayatkehamilan/'+id_check+'/edit'
 
             }
 
@@ -141,10 +142,11 @@
                             [2, "asc"],
                             [3, "asc"],
                             [4, "asc"],
-                            [5, "asc"]
+                            [5, "asc"],
+                            [6, "asc"]
                         ],
                         ajax:{
-                            url: "{{ route('inputpasien.index') }}",
+                            url: "{{ route('riwayatkehamilan.index') }}",
                         },
 
                         columnDefs: [
@@ -159,29 +161,34 @@
                             },
                             {
                                 "targets": 1,
-                                data: 'nama',
-                                name: 'nama'
+                                data: 'ibu.nama',
+                                name: 'ibu.nama'
                             },
                             {
                                 "targets": 2,
-                                data: 'umur',
-                                name: 'umur'
+                                data: 'ibu.nama_suami',
+                                name: 'ibu.nama_suami'
                             },
                             {
                                 "targets": 3,
-                                data: 'nama_suami',
-                                name: 'nama_suami'
+                                data: 'gpa',
+                                name: 'gpa'
                             },
                             {
                                 "targets": 4,
-                                data: 'alamat',
-                                name: 'alamat'
+                                data: 'siklus_haid',
+                                name: 'siklus_haid'
                             },
                             {
                                 "targets": 5,
-                                data: 'no_telp',
-                                name: 'no_telp'
-                            }
+                                data: 'tinggi_badan',
+                                name: 'tinggi_badan'
+                            },
+                            {
+                                "targets": 6,
+                                data: 'riwayat_penyakit',
+                                name: 'riwayat_penyakit'
+                            },
                         ],
                     });
 
