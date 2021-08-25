@@ -49,7 +49,18 @@ class RiwayatkehamilanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $model = new Riwayatkehamilan;
+
+        $model->id_ibu = $request->id_ibu;
+        $model->gpa = $request->gpa;
+        $model->jarak_kehamilan = $request->jarak_kehamilan;
+        $model->siklus_haid = $request->siklus_haid;
+        $model->tinggi_badan = $request->tinggi_badan;
+        $model->kb_sebelum_hamil = $request->kb_sebelum_hamil;
+        $model->riwayat_penyakit = $request->riwayat_penyakit;
+        $model->riwayat_persalinan = $request->riwayatkehamilans;
+
+        $model->save();
     }
 
     /**
