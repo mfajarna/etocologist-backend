@@ -38,7 +38,7 @@
 
             <div class="card mt-4">
                 <div class="card-header">
-                    Table List Proses Kehamilan Pasien
+                    Table List Pasien Yang Sudah Mempunyai Riwayat Kehamilan
                 </div>
                 <div class="card-body">
                       <div class="mb-10">

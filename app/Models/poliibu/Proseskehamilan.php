@@ -36,6 +36,11 @@ class Proseskehamilan extends Model
         return $this->hasOne(Riwayatkehamilan::class, 'id', 'id_riwayat');
     }
 
+    public function dataRiwayat()
+    {
+        return $this->belongsToMany(Riwayatkehamilan::class);
+    }
+
     public function getCreatedAttribute($value)
     {
         return Carbon::parse($value)->timestamp;

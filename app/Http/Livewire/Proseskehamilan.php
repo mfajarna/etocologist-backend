@@ -8,12 +8,14 @@ use Livewire\Component;
 class Proseskehamilan extends Component
 {
     public $proseskehamilan=[];
-    public $data;
+    public $data=[];
 
-    public function mount($data)
+    public function mount()
     {
         $this->proseskehamilan = [
             [
+
+                'id_riwayat' => $this->data['id'],
                 'tanggal' => '',
                 'umur_kehamilan' => '',
                 'k' => '',
@@ -30,6 +32,8 @@ class Proseskehamilan extends Component
                 'paraf' => ''
             ]
         ];
+
+        $this->data;
     }
 
 
@@ -37,6 +41,7 @@ class Proseskehamilan extends Component
     {
 
         $this->proseskehamilan[] = [
+                'id_riwayat' => $this->data['id'],
                 'tanggal' => '',
                 'umur_kehamilan' => '',
                 'k' => '',
@@ -65,6 +70,7 @@ class Proseskehamilan extends Component
     {
 
         info($this->proseskehamilan);
+        info($this->data);
         return view('livewire.proseskehamilan');
     }
 }

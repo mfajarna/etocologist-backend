@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
+use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\Facades\DataTables;
 
 class ProseskehamilanController extends Controller
@@ -51,45 +52,30 @@ class ProseskehamilanController extends Controller
     {
         $data = $request->proseskehamilan;
 
-        $tanggal = '';
-        $umur_kehamilan = 0;
-        $hb = '';
-        $lila = '';
-        $bb = 0;
-        $tinggi_fut = 0;
-        $letak_janin = '';
-        $dda = '';
-        $keluhan = '';
-        $tindakan = '';
-        $konseling = '';
-        $nr = '';
-        $paraf = '';
-
-
-        dd($data);
+        $id_riwayat = 0;
 
         foreach($data as $item)
         {
-            $tanggal = $item['tanggal'];
-            $umur_kehamilan = $item['umur_kehamilan'];
-            $hb = $item['hb'];
-            $lila = $item['lila'];
-            $bb = $item['bb'];
-            $tinggi_fut = $item['tinggi_fut'];
-            $letak_janin = $item['letak_janin'];
-            $dda = $item['dda'];
-            $keluhan = $item['keluhan'];
-            $tindakan = $item['tindakan'];
-            $konseling = $item['konseling'];
-            $nr = $item['n/r'];
-            $paraf = $item['paraf'];
+            $id_riwayat = (int) $item['id_riwayat'];
+                Proseskehamilan::create([
+                    'id_riwayat' => $item['id_riwayat'],
+                    "tanggal" => $item['tanggal'],
+                    "umur_kehamilan" => $item['umur_kehamilan'],
+                    "hb" => $item['hb'],
+                    'k' => $item['k'],
+                    "lila" => $item['lila'],
+                    "bb" => $item['bb'],
+                    "tinggi_fut" => $item['tinggi_fut'],
+                    "letak_janin" => $item['letak_janin'],
+                    "dda" => $item['dda'],
+                    "keluhan" => $item['keluhan'],
+                    "tindakan" => $item['tindakan'],
+                    "konseling" => $item['konseling'],
+                    "n/r" => $item['n/r'],
+                    "paraf" => $item['paraf'],
+                ]);
         }
-
-        // $item = [$tanggal,$umur_kehamilan, $hb, $lila,$bb,$tinggi_fut,$letak_janin,$dda,$keluhan,$tindakan,$konseling,$nr,$paraf];
-
-        // dd($item);
-
-
+        return Redirect::to('poli-ibu/proseskehamilan-add/'.$id_riwayat);
 
     }
 
@@ -140,9 +126,20 @@ class ProseskehamilanController extends Controller
 
     public function addData($id)
     {
-        $data = Riwayatkehamilan::find($id);
+        $model = Riwayatkehamilan::with('ibu')->find($id);
+        $data = Proseskehamilan::where('id_riwayat',$id)->latest()->get();
+
+        if(request()->ajax())
+        {
+            $data = Proseskehamilan::where('id_riwayat',$id)->latest()->get();
+
+            return DataTables::of($data)->make(true);
+        }
+
         return view('poliibu.proseskehamilan.create',[
-            'data' => $data
+            'model' => $model,
+            'data' => $data,
+            'id' => $id
         ]);
     }
 
