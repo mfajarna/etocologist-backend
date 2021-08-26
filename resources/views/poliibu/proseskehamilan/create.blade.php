@@ -34,27 +34,27 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                         <table id="table_data" class="table table-bordered table-striped">
-                    <thead>
-                        <tr align="center">
-                            <th><input type="checkbox" id="head-cb"></th>
-                            <th>Tanggal</th>
-                            <th>Umur Kehamilan</th>
-                            <th>K</th>
-                            <th>HB</th>
-                            <th>LILA</th>
-                            <th>Berat Badan</th>
-                            <th>Tinggi Fut</th>
-                            <th>Letak Janin</th>
-                            <th>DDA</th>
-                            <th>Keluhan</th>
-                            <th>Tindakan</th>
-                            <th>Konseling</th>
-                            <th>N/R</th>
-                            <th class="col-2">Status Paraf</th>
-                        </tr>
-                    </thead>
-                    </table>
+                      <table id="table_data" class="table table-bordered table-striped">
+                        <thead>
+                            <tr align="center">
+                                <th><input type="checkbox" id="head-cb"></th>
+                                <th>Tanggal</th>
+                                <th>Umur Kehamilan</th>
+                                <th>K</th>
+                                <th>HB</th>
+                                <th>LILA</th>
+                                <th>Berat Badan</th>
+                                <th>Tinggi Fut</th>
+                                <th>Letak Janin</th>
+                                <th>DDA</th>
+                                <th>Keluhan</th>
+                                <th>Tindakan</th>
+                                <th>Konseling</th>
+                                <th>N/R</th>
+                                <th class="col-2">Status Paraf</th>
+                            </tr>
+                        </thead>
+                        </table>
                 </div>
                 </div>
         </div>

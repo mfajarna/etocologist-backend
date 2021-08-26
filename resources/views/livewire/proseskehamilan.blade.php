@@ -3,7 +3,7 @@
             <div class="card-header " id="headingOne">
                     <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Data Pasien Ibu
+                         <svg enable-background="new 0 0 32 32" width="14pt" id="Слой_1" version="1.1" viewBox="0 4 32 32"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M24.285,11.284L16,19.571l-8.285-8.288c-0.395-0.395-1.034-0.395-1.429,0  c-0.394,0.395-0.394,1.035,0,1.43l8.999,9.002l0,0l0,0c0.394,0.395,1.034,0.395,1.428,0l8.999-9.002  c0.394-0.395,0.394-1.036,0-1.431C25.319,10.889,24.679,10.889,24.285,11.284z" fill="#828282" id="Expand_More"/><g/><g/><g/><g/><g/><g/></svg> Data Pasien Ibu
                         </button>
                     </h2>
             </div>
@@ -39,6 +39,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
              </div>
             </div>
@@ -46,7 +47,7 @@
             <div class="card-header" id="headingTwo">
             <h2 class="mb-0">
                     <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Data Riwayat Kehamilan
+                   <svg enable-background="new 0 0 32 32" width="14pt" id="Слой_1" version="1.1" viewBox="0 4 32 32"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M24.285,11.284L16,19.571l-8.285-8.288c-0.395-0.395-1.034-0.395-1.429,0  c-0.394,0.395-0.394,1.035,0,1.43l8.999,9.002l0,0l0,0c0.394,0.395,1.034,0.395,1.428,0l8.999-9.002  c0.394-0.395,0.394-1.036,0-1.431C25.319,10.889,24.679,10.889,24.285,11.284z" fill="#828282" id="Expand_More"/><g/><g/><g/><g/><g/><g/></svg> Data Riwayat Kehamilan
                     </button>
             </h2>
             </div>
@@ -98,6 +99,21 @@
                         </div>
                     </div>
                </div>
+
+               {{-- Table --}}
+                <div class="table-responsive">
+                      <table id="table_data_riwayat" class="table table-bordered table-striped">
+                        <thead>
+                            <tr align="center">
+                                <th><input type="checkbox" id="head-cb"></th>
+                                <th>No</th>
+                                <th>Umur</th>
+                                <th>Partus o/</th>
+                                <th>Cara</th>
+                            </tr>
+                        </thead>
+                        </table>
+                </div>
             </div>
 
           </div>
