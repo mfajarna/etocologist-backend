@@ -281,7 +281,7 @@
                 </div>
             </div>
             </div>
-                <div class="mt-2">
+                <div class="mt-2 mb-4">
                     <button class="btn btn-success" type="submit">Simpan</button>
                      <a href="{{ route('proseskehamilan.index') }}" class="btn btn-outline-secondary" role="button">Kembali</a>
                 </div>

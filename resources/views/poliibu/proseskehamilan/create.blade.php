@@ -2,6 +2,7 @@
     @push('head')
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
      @endpush
 
      <x-slot name="header">
@@ -50,7 +51,7 @@
                             <th>Tindakan</th>
                             <th>Konseling</th>
                             <th>N/R</th>
-                            <th>Status Paraf</th>
+                            <th class="col-2">Status Paraf</th>
                         </tr>
                     </thead>
                     </table>
@@ -63,7 +64,6 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js" defer></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js" defer></script>
-
 
         <script>
             let yangDiCheck = 0;

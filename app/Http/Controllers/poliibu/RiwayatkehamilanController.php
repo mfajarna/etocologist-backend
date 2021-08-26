@@ -5,6 +5,7 @@ namespace App\Http\Controllers\poliibu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\poliibu\Inputpasien;
+use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -136,8 +137,10 @@ class RiwayatkehamilanController extends Controller
     public function hapus(Request $request)
     {
          $data = Riwayatkehamilan::find($request->input('id'));
+         $data2 = Proseskehamilan::where('id_riwayat', $request->input('id'))->get();
 
-        if($data){
+        if($data && $data2){
+            $data->each->delete();
             $data->each->delete();
         }
     }
