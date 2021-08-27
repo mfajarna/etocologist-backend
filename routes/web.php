@@ -9,6 +9,7 @@ use App\Http\Controllers\poliibu\InputdataController;
 use App\Http\Controllers\poliibu\InputpasienController;
 use App\Http\Controllers\poliibu\ProseskehamilanController;
 use App\Http\Controllers\poliibu\RiwayatkehamilanController;
+use App\Http\Livewire\Proseskehamilan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +71,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         //Route Proses Kehamilan Pasien Ibu
         Route::resource('proseskehamilan', ProseskehamilanController::class);
         Route::get('proseskehamilan-add/{id}', [ProseskehamilanController::class,'addData'])->name('proseskehamilan.add');
+        Route::get('get-riwayat/{id}', [ProseskehamilanController::class,'getRiwayat']);
+
 
     });
 });

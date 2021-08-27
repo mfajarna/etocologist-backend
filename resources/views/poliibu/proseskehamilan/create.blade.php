@@ -26,7 +26,8 @@
         </div>
         @endif
             @livewire('proseskehamilan',[
-                'data' => $model
+                'data' => $model,
+                'id_riwayat' => $id
             ])
         <div class="card">
                 <div class="card-header">

@@ -14,6 +14,7 @@ class Riwayatkehamilans extends Component
     {
         $this->riwayatkehamilans = [
             [
+                'id_riwayat' => '4',
                 'no_riwayat' => '',
                 'umur_riwayat' => '',
                 'partus_riwayat' =>  '',
@@ -26,7 +27,7 @@ class Riwayatkehamilans extends Component
     public function addRiwayat ()
     {
 
-        $this->riwayatkehamilans[] = ['no_riwayat' => '', 'umur_riwayat' => '', 'partus_riwayat' => '', 'cara_riwayat' => '', 'ket_riwayat' => ''];
+        $this->riwayatkehamilans[] = ['id_riwayat' => '4','no_riwayat' => '', 'umur_riwayat' => '', 'partus_riwayat' => '', 'cara_riwayat' => '', 'ket_riwayat' => ''];
     }
 
     public function removeRiwayat($index)

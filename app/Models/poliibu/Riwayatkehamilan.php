@@ -32,6 +32,11 @@ class Riwayatkehamilan extends Model
         return $this->hasOne(Inputpasien::class, 'id', 'id_ibu');
     }
 
+    public function riwayats()
+    {
+        return $this->belongsToMany(Riwayatpersalinan::class);
+    }
+
     public function getCreatedAttribute($value)
     {
         return Carbon::parse($value)->timestamp;

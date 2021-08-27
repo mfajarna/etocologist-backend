@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\poliibu\Inputpasien;
 use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
+use App\Models\poliibu\Riwayatpersalinan;
 use Yajra\DataTables\Facades\DataTables;
 
 class RiwayatkehamilanController extends Controller
@@ -55,7 +56,7 @@ class RiwayatkehamilanController extends Controller
     {
 
         $this->validate($request, [
-            'id_ibu' => 'required',
+            'id_ibu' => 'required|unique:riwayatkehamilans,id_ibu',
             'gpa' => 'required',
             'jarak_kehamilan' => 'required',
             'siklus_haid' => 'required',
@@ -65,6 +66,7 @@ class RiwayatkehamilanController extends Controller
         ],
         [
             'id_ibu.required' => 'Nama Pasien Ibu Tidak Boleh Kosong!',
+            'id_ibu.unique' => 'Nama Pasien Ibu Sudah Ada',
             'gpa.required' => 'GPA Tidak Boleh Kosong!',
             'jarak_kehamilan.required' => 'Jarak Kehamilan Tidak Boleh Kosong!',
             'siklus_haid.required' => 'Siklus HaidTidak Boleh Kosong!',
@@ -85,6 +87,22 @@ class RiwayatkehamilanController extends Controller
         $model->riwayat_persalinan = $request->riwayatkehamilans;
 
         $model->save();
+
+        $id = $model->id;
+
+        $riwayatKehamilan = $request->riwayatkehamilans;
+
+        foreach($riwayatKehamilan as $riwayat)
+        {
+            Riwayatpersalinan::create([
+                'id_riwayat' => $id,
+                'no' => $riwayat['no_riwayat'],
+                'umur' => $riwayat['umur_riwayat'],
+                'partus' => $riwayat['partus_riwayat'],
+                'cara' => $riwayat['cara_riwayat'],
+                'keterangan' => $riwayat['ket_riwayat']
+            ]);
+        }
 
         return redirect()->route('riwayatkehamilan.index')->with('updatesuccess', 'Riwayat Kehamilan Pasien berhasil di Tambahkan!');
     }

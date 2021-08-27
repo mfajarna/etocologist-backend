@@ -97,6 +97,12 @@
                     @foreach ($riwayatkehamilans as $index => $riwayat)
                         <tr>
                             <td class="col-sm-2">
+                                <input type="hidden"
+                                       name="riwayatkehamilans[{{$index}}][id_riwayat]"
+                                       class="form-control"
+                                       wire:model="riwayatkehamilans.{{$index}}.id_riwayat"
+                                       value="{{ old('id_riwayat') }}"
+                                       />
                                 <input type="text"
                                        name="riwayatkehamilans[{{$index}}][no_riwayat]"
                                        class="form-control"

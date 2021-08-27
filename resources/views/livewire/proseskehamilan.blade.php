@@ -101,25 +101,27 @@
                </div>
 
                {{-- Table --}}
-                <div class="table-responsive">
-                      <table id="table_data_riwayat" class="table table-bordered table-striped">
+            </div>
+               <div class="card">
+                <div class="card-header">
+                    Data Riwayat Persalinan
+                </div>
+                <div class="card-body">
+                    <table id="table_data_riwayat" class="table table-bordered center">
                         <thead>
-                            <tr align="center">
-                                <th><input type="checkbox" id="head-cb"></th>
+                            <tr >
                                 <th>No</th>
-                                <th>Umur</th>
-                                <th>Partus o/</th>
-                                <th>Cara</th>
+                                <th class="col">Umur</th>
+                                <th class="col-4">Partus o/</th>
+                                <th class="col-4">Cara</th>
+                                <th class="col-4">Ket</th>
                             </tr>
                         </thead>
-                        </table>
+                    </table>
                 </div>
-            </div>
-
+               </div>
           </div>
           </div>
-
-
 
 <form action="{{ route('proseskehamilan.store') }}" class="w-full" method="POST">
         @csrf
@@ -305,22 +307,64 @@
     </div>
 
     @push('additional')
-          <script src="https://code.jquery.com/jquery-1.12.4.js" defer></script>
-          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
-        {{-- <script>
-            function autofill(sel)
-            {
-               var nama_pasien = sel.value;
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js" defer></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js" defer></script>
 
-               $.ajax({
-                   url: "{!! URL::to('poli-ibu/getPasien') !!}",
-                   data : 'id=' + nama_pasien,
-               }).success(function (data) {
-                    var json = data;
+          <script>
+              $(document).ready(function(){
+
+                    var table = $('#table_data_riwayat').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        "order": [
+                            [0, "asc"],
+                            [1, "asc"],
+                            [2, "asc"],
+                            [3, "asc"],
+                            [4, "asc"],
+                        ],
+                        ajax:{
+                            url: "{!! URL::to('poli-ibu/get-riwayat/'.$id_riwayat) !!}"
+                        },
+                        columnDefs: [
+                            { targets: '_all', visible: true},
+                            {
+                                "targets": 0,
+                                "class": "col-12",
+                                data: 'no',
+                                name: 'no'
+                            },
+                            {
+                                "targets": 1,
+                                "class": "",
+                                data: 'umur',
+                                name: 'umur'
+                            },
+                            {
+                                "targets": 2,
+                                "class": "",
+                                data: 'partus',
+                                name: 'partus'
+                            },
+                            {
+                                "targets": 3,
+                                "class": "",
+                                data: 'cara',
+                                name: 'cara'
+                            },
+                            {
+                                "targets": 4,
+                                "class": "",
+                                data: 'keterangan',
+                                name: 'keterangan'
+                            },
+                        ],
+
+                    })
 
 
-                    $("#nama_suami").val(json.nama_suami)
-               });
-            }
-        </script> --}}
+              });
+
+          </script>
     @endpush

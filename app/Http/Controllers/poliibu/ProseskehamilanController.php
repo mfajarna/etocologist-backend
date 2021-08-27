@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
+use App\Models\poliibu\Riwayatpersalinan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -141,6 +143,24 @@ class ProseskehamilanController extends Controller
             'data' => $data,
             'id' => $id
         ]);
+    }
+
+    public function getRiwayat($id)
+    {
+        $data = Riwayatpersalinan::where('id_riwayat',$id)->latest()->get();
+
+
+
+        if(request()->ajax())
+        {
+            $data = Riwayatpersalinan::where('id_riwayat',$id)->latest()->get();
+
+            return DataTables::of($data)->make(true);
+        }
+
+        return response()->json($data);
+
+
     }
 
 }

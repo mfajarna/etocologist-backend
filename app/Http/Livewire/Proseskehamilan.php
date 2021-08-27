@@ -2,13 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\poliibu\Riwayatkehamilan;
 use Livewire\Component;
+use App\Models\poliibu\Riwayatkehamilan;
+use Yajra\DataTables\Facades\DataTables;
 
 class Proseskehamilan extends Component
 {
     public $proseskehamilan=[];
     public $data=[];
+    public $id_riwayat = '';
+    public $riwayatkehamilan=[];
 
     public function mount()
     {
@@ -33,7 +36,10 @@ class Proseskehamilan extends Component
             ]
         ];
 
+
+
         $this->data;
+        $this->id_riwayat;
     }
 
 
@@ -71,6 +77,8 @@ class Proseskehamilan extends Component
 
         info($this->proseskehamilan);
         info($this->data);
+        info($this->id_riwayat);
+
         return view('livewire.proseskehamilan');
     }
 }
