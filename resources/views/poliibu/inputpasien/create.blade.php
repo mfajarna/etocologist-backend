@@ -110,6 +110,35 @@
                         </div>
                     </div>
                </div>
+
+               <div class="row g-3">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <x-jet-label value="{{ __('Email') }}" />
+                            <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" placeholder="Masukan Email Pasien Ibu"
+                                        :value="old('email')" required />
+                             <small id="password" class="form-text text-muted">*Email pasien ibu</small>
+                            <x-jet-input-error for="email"></x-jet-input-error>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                           <x-jet-label value="{{ __('Password') }}" />
+                            <x-jet-input class="{{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" placeholder="Masukan Password"
+                                        name="password" required autocomplete="new-password" />
+                            <small id="password" class="form-text text-muted">*Password pasien ibu</small>
+                            <x-jet-input-error for="password"></x-jet-input-error>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <x-jet-label value="{{ __('Konfirmasi Password') }}" />
+
+                             <x-jet-input class="form-control" type="password" name="password_confirmation" required autocomplete="new-password"  placeholder="Masukan Konfirmasi Password" />
+                            <small id="password" class="form-text text-muted">*Konfirmasi Password</small>
+                        </div>
+                    </div>
+               </div>
                 <div class="mt-2">
                     <button class="btn btn-success" type="submit">Simpan</button>
                      <a href="{{ route('inputpasien.index') }}" class="btn btn-outline-secondary" role="button">Kembali</a>

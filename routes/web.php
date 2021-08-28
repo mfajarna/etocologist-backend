@@ -7,6 +7,7 @@ use App\Http\Controllers\gudangfarmasi\LaporanobatController;
 use App\Http\Controllers\gudangfarmasi\ObatController;
 use App\Http\Controllers\poliibu\InputdataController;
 use App\Http\Controllers\poliibu\InputpasienController;
+use App\Http\Controllers\poliibu\PemantauankehamilanController;
 use App\Http\Controllers\poliibu\ProseskehamilanController;
 use App\Http\Controllers\poliibu\RiwayatkehamilanController;
 use App\Http\Livewire\Proseskehamilan;
@@ -74,5 +75,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::get('get-riwayat/{id}', [ProseskehamilanController::class,'getRiwayat']);
 
 
+
+        //Route Grafik
+        Route::resource('pemantauan-kehamilan', PemantauankehamilanController::class);
+        Route::get('pemantauankehamilan-add/{id}', [PemantauankehamilanController::class,'pemantauan'])->name('proseskehamilan.add');
+        Route::get('cetak-kartu-ibu/{id}',[PemantauankehamilanController::class, 'cetakPdf'])->name('proseskehamilan.cetak');
     });
 });

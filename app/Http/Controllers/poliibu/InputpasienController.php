@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers\poliibu;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\poliibu\Dataibu;
-use App\Http\Controllers\Controller;
 use App\Models\poliibu\Inputpasien;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
+use App\Actions\Fortify\PasswordValidationRules;
 
 class InputpasienController extends Controller
 {
+    use PasswordValidationRules;
+
      /**
      * Display a listing of the resource.
      *
@@ -60,7 +65,9 @@ class InputpasienController extends Controller
             'alamat' => 'required',
             'kelurahan' => 'required',
             'posyandu' => 'required',
-            'no_telp' => 'required'
+            'no_telp' => 'required',
+            'email' => 'required|string|email|unique:users,email',
+            'password' => $this->passwordRules(),
         ],[
             'nama.required' => 'Nama Pasien Ibu Tidak Boleh Kosong!',
             'nama.unique' => 'Nama Pasien Ibu Sudah Tersedia!',
@@ -90,6 +97,15 @@ class InputpasienController extends Controller
         $model->no_telp = $request->no_telp;
 
         $model->save();
+
+        $id_pasien = $model->id;
+
+        User::create([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'id_pasien' => $id_pasien,
+            'password' => Hash::make($request->password)
+        ]);
 
         return redirect()->route('inputpasien.index')->with('success','Pasien dengan nama '. $nama_pasien . ' berhasil ditambahkan!');
     }
@@ -173,9 +189,11 @@ class InputpasienController extends Controller
     public function deleteData(Request $request)
     {
         $data = Inputpasien::find($request->input('id'));
+        $data2 = User::where('id_pasien', $request->input('id'))->get();
 
         if($data){
             $data->each->delete();
+            $data2->each->delete();
         }
     }
 }

@@ -29,7 +29,7 @@ class CreateProseskehamilansTable extends Migration
             $table->string('keluhan');
             $table->string('tindakan');
             $table->string('konseling');
-            $table->string('n/r');
+            $table->string('nr');
             $table->string('paraf');
 
             $table->timestamps();

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\poliibu\Inputpasien;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','id_pasien'
     ];
 
     /**
@@ -58,4 +59,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function dataUser()
+    {
+        return $this->hasOne(Inputpasien::class, 'id', 'id_pasien');
+    }
 }

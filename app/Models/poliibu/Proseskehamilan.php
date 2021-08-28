@@ -26,7 +26,7 @@ class Proseskehamilan extends Model
         'keluhan',
         'tindakan',
         'konseling',
-        'n/r',
+        'nr',
         'paraf'
     ];
 

@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\poliibu;
 
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
 use App\Models\poliibu\Riwayatpersalinan;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
-use Yajra\DataTables\Facades\DataTables;
 
-class ProseskehamilanController extends Controller
+class PemantauankehamilanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,8 +27,8 @@ class ProseskehamilanController extends Controller
             return DataTables::of($data)->make(true);
         }
 
-        return view('poliibu.proseskehamilan.index',[
-             'data' => $data
+        return view('poliibu.grafik.index',[
+            'data' => $data
         ]);
     }
 
@@ -41,7 +39,7 @@ class ProseskehamilanController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -52,33 +50,7 @@ class ProseskehamilanController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->proseskehamilan;
-
-        $id_riwayat = 0;
-
-        foreach($data as $item)
-        {
-            $id_riwayat = (int) $item['id_riwayat'];
-                Proseskehamilan::create([
-                    'id_riwayat' => $item['id_riwayat'],
-                    "tanggal" => $item['tanggal'],
-                    "umur_kehamilan" => $item['umur_kehamilan'],
-                    "hb" => $item['hb'],
-                    'k' => $item['k'],
-                    "lila" => $item['lila'],
-                    "bb" => $item['bb'],
-                    "tinggi_fut" => $item['tinggi_fut'],
-                    "letak_janin" => $item['letak_janin'],
-                    "dda" => $item['dda'],
-                    "keluhan" => $item['keluhan'],
-                    "tindakan" => $item['tindakan'],
-                    "konseling" => $item['konseling'],
-                    "nr" => $item['nr'],
-                    "paraf" => $item['paraf'],
-                ]);
-        }
-        return Redirect::to('poli-ibu/proseskehamilan-add/'.$id_riwayat);
-
+        //
     }
 
     /**
@@ -100,7 +72,7 @@ class ProseskehamilanController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -126,7 +98,7 @@ class ProseskehamilanController extends Controller
         //
     }
 
-    public function addData($id)
+    public function pemantauan($id)
     {
         $model = Riwayatkehamilan::with('ibu')->find($id);
         $data = Proseskehamilan::where('id_riwayat',$id)->latest()->get();
@@ -138,29 +110,24 @@ class ProseskehamilanController extends Controller
             return DataTables::of($data)->make(true);
         }
 
-        return view('poliibu.proseskehamilan.create',[
+        return view('poliibu.grafik.create',[
             'model' => $model,
             'data' => $data,
             'id' => $id
         ]);
     }
 
-    public function getRiwayat($id)
+    public function cetakPdf($id)
     {
-        $data = Riwayatpersalinan::where('id_riwayat',$id)->latest()->get();
+        $model = Riwayatkehamilan::with('ibu')->find($id);
+        $data = Proseskehamilan::where('id_riwayat',$id)->latest()->get();
+        $riwayat = Riwayatpersalinan::where('id_riwayat', $id)->latest()->get();
 
-
-
-        if(request()->ajax())
-        {
-            $data = Riwayatpersalinan::where('id_riwayat',$id)->latest()->get();
-
-            return DataTables::of($data)->make(true);
-        }
-
-        return response()->json($data);
-
-
+        return view('poliibu.grafik.cetak',[
+            'model' => $model,
+            'data' => $data,
+            'id' => $id,
+            'riwayat' => $riwayat
+        ]);
     }
-
 }

@@ -31,7 +31,7 @@ class Proseskehamilan extends Component
                 'keluhan' => '',
                 'tindakan' => '',
                 'konseling' => '',
-                'n/r' => '',
+                'nr' => '',
                 'paraf' => ''
             ]
         ];
@@ -60,7 +60,7 @@ class Proseskehamilan extends Component
                 'keluhan' => '',
                 'tindakan' => '',
                 'konseling' => '',
-                'n/r' => '',
+                'nr' => '',
                 'paraf' => ''
         ];
     }

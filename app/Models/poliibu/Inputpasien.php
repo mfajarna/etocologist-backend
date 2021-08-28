@@ -2,6 +2,7 @@
 
 namespace App\Models\poliibu;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,7 +24,7 @@ class Inputpasien extends Model
         "alamat",
         "kelurahan",
         "posyandu",
-        "no_telp"
+        "no_telp",
     ];
 
 

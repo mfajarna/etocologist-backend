@@ -270,11 +270,11 @@
                                 </td>
                                 <td class="col-2">
                                     <input type="text"
-                                        name="proseskehamilan[{{$index}}][n/r]"
+                                        name="proseskehamilan[{{$index}}][nr]"
                                         class="form-control"
-                                        wire:model="proseskehamilan.{{$index}}.n/r"
+                                        wire:model="proseskehamilan.{{$index}}.nr"
                                         placeholder="Masukan n/r"
-                                        value="{{ old('n/r') }}" required
+                                        value="{{ old('nr') }}" required
                                     />
                                 </td>
                                 <td class="col-2">
