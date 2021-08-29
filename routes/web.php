@@ -93,6 +93,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::prefix('poli-anak')->group(function (){
 
         Route::get('getIbu', [RiwayatkehamilanController::class, 'getDataPasien']);
+        Route::get('getDataAnak', [RiwayatkeadaanController::class, 'getDataANak']);
 
         Route::get('pelayanan-anak', function(){
             return view('polianak.pelayanananak.index');
@@ -104,6 +105,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
             Route::get('inputanak-delete', [InputanakController::class, 'hapus'])->name('inputanak.hapus');
 
             Route::resource('riwayatkeadaan', RiwayatkeadaanController::class);
+
+
         });
     });
 });
