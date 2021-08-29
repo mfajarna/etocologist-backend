@@ -107,14 +107,14 @@
                     Data Riwayat Persalinan
                 </div>
                 <div class="card-body">
-                    <table id="table_data_riwayat" class="table table-bordered center">
+                    <table id="table_data_riwayat" class="table table-bordered ">
                         <thead>
-                            <tr >
+                            <tr>
                                 <th>No</th>
-                                <th class="col">Umur</th>
-                                <th class="col-4">Partus o/</th>
-                                <th class="col-4">Cara</th>
-                                <th class="col-4">Ket</th>
+                                <th style="width: 16.66%">Umur</th>
+                                <th style="width: 25%">Partus o/</th>
+                                <th style="width: 25%">Cara</th>
+                                <th style="width: 25%">Ket</th>
                             </tr>
                         </thead>
                     </table>

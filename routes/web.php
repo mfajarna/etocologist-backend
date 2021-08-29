@@ -5,6 +5,8 @@ use App\Http\Controllers\gudangfarmasi\InformasiobatController;
 use App\Http\Controllers\gudangfarmasi\JenisobatController;
 use App\Http\Controllers\gudangfarmasi\LaporanobatController;
 use App\Http\Controllers\gudangfarmasi\ObatController;
+use App\Http\Controllers\polianak\InputanakController;
+use App\Http\Controllers\polianak\RiwayatkeadaanController;
 use App\Http\Controllers\poliibu\InputdataController;
 use App\Http\Controllers\poliibu\InputpasienController;
 use App\Http\Controllers\poliibu\PemantauankehamilanController;
@@ -80,5 +82,28 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::resource('pemantauan-kehamilan', PemantauankehamilanController::class);
         Route::get('pemantauankehamilan-add/{id}', [PemantauankehamilanController::class,'pemantauan'])->name('proseskehamilan.add');
         Route::get('cetak-kartu-ibu/{id}',[PemantauankehamilanController::class, 'cetakPdf'])->name('proseskehamilan.cetak');
+    });
+
+
+    // Route Poli Anak
+    Route::get('poli-anak', function(){
+        return view('polianak.index');
+    });
+
+    Route::prefix('poli-anak')->group(function (){
+
+        Route::get('getIbu', [RiwayatkehamilanController::class, 'getDataPasien']);
+
+        Route::get('pelayanan-anak', function(){
+            return view('polianak.pelayanananak.index');
+        });
+
+        // Route Pelayanan Anak
+        Route::prefix('pelayanan-anak')->group(function(){
+            Route::resource('inputanak', InputanakController::class);
+            Route::get('inputanak-delete', [InputanakController::class, 'hapus'])->name('inputanak.hapus');
+
+            Route::resource('riwayatkeadaan', RiwayatkeadaanController::class);
+        });
     });
 });
