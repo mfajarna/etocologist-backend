@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\poliibu;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\poliibu\Inputpasien;
+use App\Http\Controllers\Controller;
 use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
-use App\Models\poliibu\Riwayatpersalinan;
+use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\Facades\DataTables;
+use App\Models\poliibu\Riwayatpersalinan;
 
 class RiwayatkehamilanController extends Controller
 {
@@ -126,7 +127,11 @@ class RiwayatkehamilanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $model = Riwayatkehamilan::with('ibu')->find($id);
+
+        return view('poliibu.riwayatkehamilan.edit',[
+            'model' => $model
+        ]);
     }
 
     /**
@@ -169,5 +174,33 @@ class RiwayatkehamilanController extends Controller
         $model = Inputpasien::find($id);
 
         return response()->json($model);
+    }
+
+    public function editDataRiwayat($id)
+    {
+        $model = Riwayatkehamilan::with('ibu')->find($id);
+
+        return view('poliibu.riwayatkehamilan.edit',[
+            'model' => $model
+        ]);
+    }
+
+    public function addNewDataRiwayat(Request $request)
+    {
+        $riwayatkehamilan = $request->riwayatkehamilanupdate;
+
+        foreach($riwayatkehamilan as $riwayat)
+        {
+            Riwayatpersalinan::create([
+                'id_riwayat' => $request->id_riwayat,
+                'no' => $riwayat['no_riwayat'],
+                'umur' => $riwayat['umur_riwayat'],
+                'partus' => $riwayat['partus_riwayat'],
+                'cara' => $riwayat['cara_riwayat'],
+                'keterangan' => $riwayat['ket_riwayat']
+            ]);
+        }
+
+         return Redirect::to('poli-ibu/riwayatkehamilan/'.$request->id_riwayat.'/edit');
     }
 }

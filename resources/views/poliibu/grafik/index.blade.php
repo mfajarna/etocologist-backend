@@ -43,12 +43,6 @@
                 <div class="card-body">
                       <div class="mb-10">
 
-                         <button class="btn btn-success" id="buttontmbh_nonaktif_all" onClick="tambahOnClick()" disabled>
-                            <svg id="i-edit" class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 1 32 32" fill="none" stroke="#FFFF" stroke-linecap="round" stroke-linejoin="round" width="15px" stroke-width="2">
-                                <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" /></svg>
-                                Lihat
-                         </button>
-
                         <button class="btn btn-success" id="buttoncetak_nonaktif_all" onClick="cetakOnClick()" disabled>
                             <svg id="i-edit" class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 1 32 32" fill="none" stroke="#FFFF" stroke-linecap="round" stroke-linejoin="round" width="15px" stroke-width="2">
                                 <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" /></svg>

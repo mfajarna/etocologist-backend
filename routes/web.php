@@ -13,6 +13,7 @@ use App\Http\Controllers\poliibu\PemantauankehamilanController;
 use App\Http\Controllers\poliibu\ProseskehamilanController;
 use App\Http\Controllers\poliibu\RiwayatkehamilanController;
 use App\Http\Livewire\Proseskehamilan;
+use App\Http\Livewire\Riwayatkeadaanupdate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +71,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::resource('riwayatkehamilan', RiwayatkehamilanController::class);
         Route::get('getPasien', [RiwayatkehamilanController::class, 'getDataPasien']);
         Route::get('riwayatkehamilan-delete', [RiwayatkehamilanController::class, 'hapus'])->name('riwayatkehamilan.hapus');
+        Route::get('riwayatkehamilan-addon/{id}', [RiwayatkehamilanController::class, 'editDataRiwayat'])->name('riwayatkehamilan.addon');
+        Route::post('riwayatkehamilan-addnew', [RiwayatkehamilanController::class, 'addNewDataRiwayat'])->name('riwayatkehamilan.addnew');
+
 
         //Route Proses Kehamilan Pasien Ibu
         Route::resource('proseskehamilan', ProseskehamilanController::class);
@@ -99,14 +103,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
             return view('polianak.pelayanananak.index');
         });
 
+        Route::get('getRiwayatAnak/{id}',[RiwayatkeadaanController::class, 'getRiwayatKeadaanAnak']);
+        Route::post('addRiwayatAnak', [RiwayatkeadaanController::class, 'addData'])->name('riwayatkeadaan.addData');
+
         // Route Pelayanan Anak
         Route::prefix('pelayanan-anak')->group(function(){
             Route::resource('inputanak', InputanakController::class);
             Route::get('inputanak-delete', [InputanakController::class, 'hapus'])->name('inputanak.hapus');
 
             Route::resource('riwayatkeadaan', RiwayatkeadaanController::class);
-
-
         });
     });
 });

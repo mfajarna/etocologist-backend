@@ -164,8 +164,8 @@
                             },
                             {
                                 "targets": 13,
-                                data: 'n/r',
-                                name: 'n/r'
+                                data: 'nr',
+                                name: 'nr'
                             },
                             {
                                 "targets": 14,

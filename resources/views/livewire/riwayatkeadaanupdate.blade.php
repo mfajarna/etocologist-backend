@@ -1,55 +1,45 @@
 
-<form action="{{ route('riwayatkeadaan.store') }}" class="w-full" method="POST">
+<form action="{{ route('riwayatkeadaan.addData') }}" class="w-full" method="POST">
         @csrf
+
         <div class="card">
             <div class="card-header">
                 Data Pasien Anak
              </div>
              <div class="card-body">
+                 <input type="hidden" class="form-control" id="id_anak" name="id_anak" aria-describedby="id_anak" placeholder="Masukan Nama Ibu" value={{ $model->id }} readonly>
                  <div class="row g-3">
                     <div class="col-sm-4">
-                         <div class="form-group">
+                        <div class="form-group">
                             <label for="id_anak">Nama Anak</label>
-                            <select name="id_anak" id="id_anak" class="form-control" placeholder="" onchange="autofill(this)">
-                            <option value="" disabled selected>-- Pilih Nama Anak --</option>
-                                @foreach ($model as $data )
-                                    <option value="{{ $data->id }}">{{ $data->nama }}</option>
-                                @endforeach
-
-                            </select>
-                        <small id="id_ibu" class="form-text text-muted">*Nama Anak Yang Sudah Terdaftar</small>
+                            <input type="text" class="form-control" id="nama_anak" name="nama_anak" aria-describedby="nama_anak" placeholder="Masukan Nama Ibu" value={{ $model->nama }}  readonly>
+                        <small id="nama_anak" class="form-text text-muted">*Nama Anak Yang Sudah Terdaftar</small>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="nama_ibu">Nama Ibu</label>
-                            <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" aria-describedby="nama_ibu" placeholder="Masukan Nama Ibu" readonly>
+                            <label for="nama_ibu">Tanggal Lahir</label>
+                            <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" aria-describedby="nama_ibu" placeholder="Masukan Nama Ibu" value="{{ $model->tanggal_lahir }}"  readonly>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="nama_suami">Nama Ayah</label>
-                            <input type="text" class="form-control" id="nama_suami" name="nama_suami" aria-describedby="nama_suami" placeholder="Masukan Nama Ayah" readonly>
+                            <label for="jenis_kelamin">Jenis Kelamin</label>
+                            <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" aria-describedby="jenis_kelamin" value="{{ $model->jenis_kelamin }}"  readonly>
                         </div>
                     </div>
                  </div>
                  <div class="row g-3">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="tanggal_lahir">Tanggal Lahir</label>
-                            <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir" aria-describedby="tanggal_lahir" placeholder="Masukan Tanggal Lahir" readonly>
+                            <label for="tempat_lahir">Tempat Lahir</label>
+                            <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" aria-describedby="tempat_lahir" placeholder="Masukan Tempat Lahir" value="{{ $model->tempat_lahir }}" readonly>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="jenis_kelamin">Jenis Kelamin</label>
-                            <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" aria-describedby="jenis_kelamin" placeholder="Masukan Jenis Kelamin" readonly>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <textarea class="form-control" id="alamat" name="alamat" aria-describedby="alamat" placeholder="Masukan Alamat" readonly> </textarea>
+                            <label for="berat_badan">Berat Badan (Kg)</label>
+                            <input type="text" class="form-control" id="berat_badan" name="berat_badan" aria-describedby="berat_badan" value="{{ $model->bb }}" readonly>
                         </div>
                     </div>
                  </div>
@@ -57,64 +47,32 @@
         </div>
         <div class="card">
              <div class="card-header">
-                Riwayat Pem. Saat Lahir
+                Riwayat Keadaan Anak
             </div>
             <div class="card-body">
-               <div class="row g-3">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="bb">BB</label>
-                            <input type="number" class="form-control" id="bb" name="bb" aria-describedby="bb" placeholder="Masukan BB" readonly>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="bblr">BBLR</label>
-                            <input type="number" class="form-control" id="bblr" name="bblr" aria-describedby="bblr" placeholder="Masukan BBLR" readonly>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="keadaan_lahir">Keadaan Lahir</label>
-                                <input type="text" class="form-control" id="keadaan_lahir" name="keadaan_lahir" aria-describedby="keadaan_lahir" placeholder="Masukan Keadaan Lahir" readonly>
-                        </div>
-                        </div>
-                    </div>
-               </div>
-               <div class="row g-3">
-                   <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="tempat_lahir">Lahir Di</label>
-                            <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" aria-describedby="tempat_lahir" placeholder="Masukan Tempat Lahir" readonly>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="letak_janin">Letak Janin</label>
-                            <input type="text" class="form-control" id="letak_janin" name="letak_janin" aria-describedby="letak_janin" placeholder="Masukan Letak Janin" readonly>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="jenis_imunisasi">Jenis Imunisasi</label>
-                            <input type="text" class="form-control" id="jenis_imunisasi" name="jenis_imunisasi" aria-describedby="jenis_imunisasi" placeholder="Masukan Jenis Imunisasi" readonly>
-                        </div>
-                    </div>
-
-               </div>
-                <div class="row g-3">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="cara_lahir">Cara Lahir</label>
-                            <input type="text" class="form-control" id="cara_lahir" name="cara_lahir" aria-describedby="cara_lahir" placeholder="Masukan Cara Lahir" readonly>
-                        </div>
-                    </div>
-                </div>
-        </div>
-
+                <table class="table table-responsive" id="table_data">
+                   <thead>
+                    <tr>
+                        <th width="5%"><input type="checkbox" id="head-cb"></th>
+                        <th width="23%">Tanggal</th>
+                        <th>Minggu Ke</th>
+                        <th>Umur .. Hari</th>
+                        <th>BB</th>
+                        <th>PB</th>
+                        <th>St Gizi</th>
+                        <th>Makanan</th>
+                        <th>Tali Pusat</th>
+                        <th>Imunisasi</th>
+                        <th>KK</th>
+                        <th>Cacat</th>
+                        <th>Gejala</th>
+                        <th>Tindakan Nasehat</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
         <div class="card">
-                           <div class="card-header">
+                <div class="card-header">
                    Data Riwayat Keadaan Anak
                </div>
                 <div class="card-body">
@@ -133,7 +91,7 @@
                         <th class="col-2">KK</th>
                         <th class="col-2">Cacat</th>
                         <th class="col-2">Gejala</th>
-                        <th class="col-2">Tindakan Pusat</th>
+                        <th class="col-2">Tindakan Nasehat</th>
                         <th class="col-2">Aksi</th>
                     </tr>
                     </thead>
@@ -296,9 +254,13 @@
             </form>
     </div>
 
+
     @push('additional')
           <script src="https://code.jquery.com/jquery-1.12.4.js" defer></script>
           <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js" defer></script>
+          <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js" defer></script>
         <script>
             function autofill(sel)
             {
@@ -324,5 +286,110 @@
                     $("#cara_lahir").val(json.cara_lahir)
                });
             }
+
+
+            let yangDiCheck = 0;
+
+            $(document).ready(function(){
+                var t = $('#table_data').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        "order": [
+                            [1, "asc"],
+                            [2, "asc"],
+                            [3, "asc"],
+                            [4, "asc"],
+                            [5, "asc"],
+                            [6, "asc"],
+                            [7, "asc"],
+                            [8, "asc"],
+                            [9, "asc"],
+                            [10, "asc"],
+                            [11, "asc"],
+                            [12, "asc"],
+                            [13, "asc"],
+                        ],
+                        ajax:{
+                            url: "{!! URL::to('poli-anak/getRiwayatAnak/'.$model->id) !!}",
+                        },
+
+                        columnDefs: [
+                            { targets: '_all', visible: true},
+                            {
+                                "targets": 0,
+                                "class": "text-center",
+                                orderable: false,
+                                "render": function(data, type, row, meta){
+                                    return `<input type="checkbox" name="obat_checked[]"  class="cb-child" value="${row.id}">`;
+                                }
+                            },
+                            {
+                                "targets": 1,
+                                data: 'tanggal',
+                                name: 'tanggal'
+                            },
+                            {
+                                "targets": 2,
+                                data: 'minggu_ke',
+                                name: 'minggu_ke'
+                            },
+                            {
+                                "targets": 3,
+                                data: 'umur_hari',
+                                name: 'umur_hari'
+                            },
+                            {
+                                "targets": 4,
+                                data: 'bb',
+                                name: 'bb'
+                            },
+                            {
+                                "targets": 5,
+                                data: 'pb',
+                                name: 'pb'
+                            },
+                            {
+                                "targets": 6,
+                                data: 'st_gizi',
+                                name: 'st_gizi'
+                            },
+                            {
+                                "targets": 7,
+                                data: 'makanan',
+                                name: 'makanan'
+                            },
+                            {
+                                "targets": 8,
+                                data: 'tali_pusat',
+                                name: 'tali_pusat'
+                            },
+                            {
+                                "targets": 9,
+                                data: 'imunisasi',
+                                name: 'imunisasi'
+                            },
+                            {
+                                "targets": 10,
+                                data: 'kk',
+                                name: 'kk'
+                            },
+                            {
+                                "targets": 11,
+                                data: 'cacat',
+                                name: 'cacat'
+                            },
+                            {
+                                "targets": 12,
+                                data: 'gejala',
+                                name: 'gejala'
+                            },
+                            {
+                                "targets": 13,
+                                data: 'tindakan_nasehat',
+                                name: 'tindakan_nasehat'
+                            },
+                        ],
+                    });
+            });
         </script>
     @endpush

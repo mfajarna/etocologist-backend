@@ -81,7 +81,7 @@
                <div class="card-header">
                    Data Riwayat Persalinan
                </div>
-                        <div class="card-body">
+              <div class="card-body">
                 <table class="table" id="products_table">
                     <thead>
                     <tr>
