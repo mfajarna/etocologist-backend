@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\poliibu\Proseskehamilan;
+use App\Models\poliibu\Riwayatkehamilan;
 
 class InputpasienController extends Controller
 {
@@ -190,10 +192,14 @@ class InputpasienController extends Controller
     {
         $data = Inputpasien::find($request->input('id'));
         $data2 = User::where('id_pasien', $request->input('id'))->get();
+        $data3 = Riwayatkehamilan::where('id_ibu', $request->input('id'))->get();
+        $data4 = Proseskehamilan::where('id_ibu', $request->input('id'))->get();
 
         if($data){
             $data->each->delete();
             $data2->each->delete();
+            $data3->each->delete();
+            $data4->each->delete();
         }
     }
 }

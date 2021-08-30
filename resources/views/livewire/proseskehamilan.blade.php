@@ -110,11 +110,11 @@
                     <table id="table_data_riwayat" class="table table-bordered ">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th style="width: 16.66%">Umur</th>
-                                <th style="width: 25%">Partus o/</th>
-                                <th style="width: 25%">Cara</th>
-                                <th style="width: 25%">Ket</th>
+                                <th class="text-center" style="width: 12.5%">No</th>
+                                <th class="text-center" style="width: 12.5%">Umur</th>
+                                <th class="text-center" style="width: 25%">Partus o/</th>
+                                <th class="text-center" style="width: 25%">Cara</th>
+                                <th class="text-center" style="width: 25%">Ket</th>
                             </tr>
                         </thead>
                     </table>
@@ -131,6 +131,7 @@
                </div>
                 <div class="card-body">
                 <div>
+                    <input type="hidden" name="id_ibu" id="id_ibu" value={{ $data->ibu->id }} />
                     <table class="table table-responsive" id="products_table">
                         <thead>
                         <tr class="d-flex">
@@ -331,31 +332,26 @@
                             { targets: '_all', visible: true},
                             {
                                 "targets": 0,
-                                "class": "col-12",
                                 data: 'no',
                                 name: 'no'
                             },
                             {
                                 "targets": 1,
-                                "class": "",
                                 data: 'umur',
                                 name: 'umur'
                             },
                             {
                                 "targets": 2,
-                                "class": "",
                                 data: 'partus',
                                 name: 'partus'
                             },
                             {
                                 "targets": 3,
-                                "class": "",
                                 data: 'cara',
                                 name: 'cara'
                             },
                             {
                                 "targets": 4,
-                                "class": "",
                                 data: 'keterangan',
                                 name: 'keterangan'
                             },

@@ -14,6 +14,7 @@ class Riwayatpersalinan extends Model
 
     protected $fillable = [
         'id_riwayat',
+        'id_ibu',
         'no',
         'umur',
         'partus',
@@ -24,6 +25,11 @@ class Riwayatpersalinan extends Model
     public function riwayat()
     {
         return $this->hasOne(Riwayatkehamilan::class, 'id', 'id_riwayat');
+    }
+
+    public function ibu()
+    {
+        return $this->hasOne(Inputpasien::class, 'id', 'id_ibu');
     }
 
         public function getCreatedAttribute($value)

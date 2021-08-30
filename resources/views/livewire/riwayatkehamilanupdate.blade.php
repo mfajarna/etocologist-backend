@@ -5,8 +5,10 @@
          <div class="card-header">
              Data Pasien Ibu
          </div>
+
          <div class="card-body">
              <input type="hidden" class="form-control" id="id_riwayat" name="id_riwayat" aria-describedby="id_riwayat" placeholder="Masukan Nama Ibu" value={{ $model->id }} readonly>
+              <input type="hidden" class="form-control" id="id_ibu" name="id_ibu" aria-describedby="id_ibu" placeholder="Masukan Nama Ibu" value={{ $model->ibu->id }} readonly>
 
              <div class="row g-3">
                  <div class="col-sm-4">
@@ -38,7 +40,7 @@
              Data Riwayat Persalinan
          </div>
          <div class="card-body">
-                <table id="table_data_riwayat" class="table table-bordered ">
+                <table id="table_data_riwayat" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 12.5%">No</th>

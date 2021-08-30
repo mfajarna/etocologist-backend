@@ -61,6 +61,7 @@ class ProseskehamilanController extends Controller
             $id_riwayat = (int) $item['id_riwayat'];
                 Proseskehamilan::create([
                     'id_riwayat' => $item['id_riwayat'],
+                    'id_ibu' => $request->id_ibu,
                     "tanggal" => $item['tanggal'],
                     "umur_kehamilan" => $item['umur_kehamilan'],
                     "hb" => $item['hb'],

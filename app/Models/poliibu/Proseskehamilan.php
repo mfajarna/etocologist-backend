@@ -14,6 +14,7 @@ class Proseskehamilan extends Model
 
     protected $fillable = [
         'id_riwayat',
+        'id_ibu',
         'tanggal',
         'umur_kehamilan',
         'k',
@@ -34,6 +35,11 @@ class Proseskehamilan extends Model
     public function riwayat()
     {
         return $this->hasOne(Riwayatkehamilan::class, 'id', 'id_riwayat');
+    }
+
+    public function ibu()
+    {
+        return $this->hasOne(Inputpasien::class, 'id', 'id_ibu');
     }
 
     public function dataRiwayat()

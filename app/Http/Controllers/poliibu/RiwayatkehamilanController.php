@@ -193,6 +193,7 @@ class RiwayatkehamilanController extends Controller
         {
             Riwayatpersalinan::create([
                 'id_riwayat' => $request->id_riwayat,
+                'id_ibu' => $request->id_ibu,
                 'no' => $riwayat['no_riwayat'],
                 'umur' => $riwayat['umur_riwayat'],
                 'partus' => $riwayat['partus_riwayat'],
