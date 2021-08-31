@@ -26,7 +26,10 @@
         </div>
         @endif
 
-        {{-- @livewire('riwayatkeadaan') --}}
+        @livewire('kunjungankeadaan',[
+            'model' => $model,
+        ])
+
     </div>
 
 </x-content>

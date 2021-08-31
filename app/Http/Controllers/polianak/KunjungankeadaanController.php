@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\polianak;
 
 use App\Http\Controllers\Controller;
+use App\Models\polianak\Inputanak;
+use App\Models\polianak\Riwayatkeadaan;
 use Illuminate\Http\Request;
 
 class KunjungankeadaanController extends Controller
@@ -57,7 +59,12 @@ class KunjungankeadaanController extends Controller
      */
     public function edit($id)
     {
-        return view('polianak.pelayanananak.kunjungankeadaan.create');
+        $model = Riwayatkeadaan::with('anak')->where('id_anak', $id)->get()->toArray();
+
+
+        return view('polianak.pelayanananak.kunjungankeadaan.create',[
+            'model' => $model
+        ]);
     }
 
     /**
