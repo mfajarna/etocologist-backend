@@ -6,6 +6,7 @@ use App\Http\Controllers\gudangfarmasi\JenisobatController;
 use App\Http\Controllers\gudangfarmasi\LaporanobatController;
 use App\Http\Controllers\gudangfarmasi\ObatController;
 use App\Http\Controllers\polianak\InputanakController;
+use App\Http\Controllers\polianak\KunjungankeadaanController;
 use App\Http\Controllers\polianak\RiwayatkeadaanController;
 use App\Http\Controllers\poliibu\InputdataController;
 use App\Http\Controllers\poliibu\InputpasienController;
@@ -112,6 +113,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
             Route::get('inputanak-delete', [InputanakController::class, 'hapus'])->name('inputanak.hapus');
 
             Route::resource('riwayatkeadaan', RiwayatkeadaanController::class);
+
+            Route::resource('kunjungankeadaan', KunjungankeadaanController::class);
         });
     });
 });

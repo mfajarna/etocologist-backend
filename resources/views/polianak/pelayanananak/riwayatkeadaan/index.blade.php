@@ -48,9 +48,13 @@
                          <button class="btn btn-success" id="button_nonaktif_all" onClick="tambahOnClick()" disabled>
                             <svg id="i-edit" class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 1 32 32" fill="none" stroke="#FFFF" stroke-linecap="round" stroke-linejoin="round" width="15px" stroke-width="2">
                                 <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" /></svg>
-                                Tambah
+                                Riwayat Keadaan
                          </button>
-
+                        <button class="btn btn-success" id="buttonknjg_nonaktif_all" onClick="kunjunganOnclick()" disabled>
+                            <svg id="i-edit" class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 1 32 32" fill="none" stroke="#FFFF" stroke-linecap="round" stroke-linejoin="round" width="15px" stroke-width="2">
+                                <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" /></svg>
+                                Kunjungan Keadaan
+                         </button>
                      </div>
                     <div class="table-responsive mt-4">
                          <table id="table_data" class="table table-bordered table-striped">
@@ -98,6 +102,18 @@
                     }
                 });
                 }
+            }
+
+            function kunjunganOnclick()
+            {
+                let checkbox_terpilih = $("#table_data tbody .cb-child:checked");
+                let id_check = []
+                $.each(checkbox_terpilih, function(index, elm){
+                    id_check.push(elm.value);
+                })
+
+               window.location.href='kunjungankeadaan/'+id_check+'/edit'
+
             }
 
             function tambahOnClick()
@@ -170,7 +186,7 @@
                          let button_non_aktif_status = (yangDiCheck.length>0);
 
                          $("#button_nonaktif_all").prop('disabled', !button_non_aktif_status);
-                         $("#buttonhps_nonaktif_all").prop('disabled', !button_non_aktif_status);
+                         $("#buttonknjg_nonaktif_all").prop('disabled', !button_non_aktif_status);
                          $("#buttontmbh_nonaktif_all").prop('disabled', !button_non_aktif_status);
                     });
              });
