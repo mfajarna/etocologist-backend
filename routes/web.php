@@ -117,7 +117,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
             Route::resource('kunjungankeadaan', KunjungankeadaanController::class);
             Route::post('kunjungankeadaan-addKunjungan', [KunjungankeadaanController::class, 'addKunjungan'])->name('kunjungankeadaan.addkunjungan');
-
+            Route::get('cetak-kartu-anak/{id}', [KunjungankeadaanController::class, 'cetakKartuAnak']);
 
         });
     });

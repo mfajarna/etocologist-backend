@@ -139,4 +139,18 @@ class KunjungankeadaanController extends Controller
         return response()->json($data);
     }
 
+
+    public function cetakKartuAnak($id)
+    {
+        $riwayatKeadaan = Riwayatkeadaan::where('id_anak', $id)->get()->toArray();
+        $kunjunganKeadaan = Kunjungankeadaan::where('id_anak', $id)->get()->toArray();
+        $anak = Inputanak::find($id);
+
+        return view('polianak.pelayanananak.kunjungankeadaan.cetak',[
+            'riwayatKeadaan' => $riwayatKeadaan,
+            'kunjunganKeadaan' => $kunjunganKeadaan,
+            'anak' => $anak
+        ]);
+    }
+
 }
