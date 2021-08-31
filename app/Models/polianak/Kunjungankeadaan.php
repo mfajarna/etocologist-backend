@@ -15,6 +15,7 @@ class Kunjungankeadaan extends Model
            'id_riwayatkeadaan',
            'id_anak',
            'bulan',
+           'umur',
            'tanggal',
            'bb',
            'pb',

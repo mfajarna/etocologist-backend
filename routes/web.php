@@ -106,6 +106,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
         Route::get('getRiwayatAnak/{id}',[RiwayatkeadaanController::class, 'getRiwayatKeadaanAnak']);
         Route::post('addRiwayatAnak', [RiwayatkeadaanController::class, 'addData'])->name('riwayatkeadaan.addData');
+        Route::get('getKunjunganRiwayat/{id}', [KunjungankeadaanController::class, 'getRiwayatKeadaanKunjungan']);
 
         // Route Pelayanan Anak
         Route::prefix('pelayanan-anak')->group(function(){
@@ -115,6 +116,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
             Route::resource('riwayatkeadaan', RiwayatkeadaanController::class);
 
             Route::resource('kunjungankeadaan', KunjungankeadaanController::class);
+            Route::post('kunjungankeadaan-addKunjungan', [KunjungankeadaanController::class, 'addKunjungan'])->name('kunjungankeadaan.addkunjungan');
+
+
         });
     });
 });

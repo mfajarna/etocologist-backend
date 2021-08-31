@@ -14,43 +14,43 @@ class Kunjungankeadaan extends Component
     {
         $this->kunjunganKeadaan = [
             [
-           'bulan' => '',
-           'tanggal' => '',
-           'bb' => '',
-           'pb' => '',
-           'lk' => '',
-           'asi' => '',
-           'pasi' => '',
-           'mpa' => '',
-           'imunisasi' => '',
-           'perkembangan_kesehatan' => '',
-           'th' => '',
-           'nasehat' => '',
+                'bulan' => '',
+                'umur' => '',
+                'tanggal' => '',
+                'bb' => '',
+                'pb' => '',
+                'lk' => '',
+                'asi' => '',
+                'pasi' => '',
+                'mpa' => '',
+                'imunisasi' => '',
+                'perkembangan_kesehatan' => '',
+                'th' => '',
+                'nasehat' => '',
             ]
         ];
-
-        $this->model;
-
     }
 
-    public function addRiwayat()
+    public function addRiwayatKunjungan()
     {
-        $this->kunjunganKeadaan = [
+        $this->kunjunganKeadaan[] =
             [
-           'bulan' => '',
-           'tanggal' => '',
-           'bb' => '',
-           'pb' => '',
-           'lk' => '',
-           'asi' => '',
-           'pasi' => '',
-           'mpa' => '',
-           'imunisasi' => '',
-           'perkembangan_kesehatan' => '',
-           'th' => '',
-           'nasehat' => '',
-            ]
-        ];
+                'bulan' => '',
+                'umur' => '',
+                'tanggal' => '',
+                'bb' => '',
+                'pb' => '',
+                'lk' => '',
+                'asi' => '',
+                'pasi' => '',
+                'mpa' => '',
+                'imunisasi' => '',
+                'perkembangan_kesehatan' => '',
+                'th' => '',
+                'nasehat' => '',
+            ];
+
+
     }
 
     public function removeRiwayat($index)
