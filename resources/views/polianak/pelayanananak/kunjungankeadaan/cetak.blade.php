@@ -250,6 +250,12 @@
                 </table>
             </div>
         </div>
+          </body>
+    <footer>
+        <div class="d-flex justify-content-center mt-5">
+            <img src="{{ url('assets/img/logoBidans.png') }}"/>
+        </div>
+    </footer>
     <script>
         window.print();
     </script>
