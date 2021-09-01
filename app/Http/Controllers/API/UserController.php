@@ -52,9 +52,8 @@ class UserController extends Controller
     public function fetch(Request $request)
     {   
         $data = $request->user();
-        $model = Auth::user()->dataUser;
 
-        $response = [$data,$model];
+        $response = [$data];
         return ResponseFormatter::success($response,'Data profile user berhasil diambil!');
     }
 }
