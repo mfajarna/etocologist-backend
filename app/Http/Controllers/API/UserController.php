@@ -49,8 +49,8 @@ class UserController extends Controller
             }
     }
 
-        public function fetch(Request $request)
+    public function fetch(Request $request)
     {
-        return ResponseFormatter::success($request->user(), 'Data profile user berhasil diambil!');
+        return ResponseFormatter::success($request->user()->dataUser, 'Data profile user berhasil diambil!');
     }
 }
