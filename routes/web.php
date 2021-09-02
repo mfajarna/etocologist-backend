@@ -128,6 +128,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('administrasi', AdministrasiController::class);
 
     Route::resource('pasien', PasienController::class);
+    Route::get('antrian',[PasienController::class,'antrian'])->name('pasien.antrian');
 
 
 });

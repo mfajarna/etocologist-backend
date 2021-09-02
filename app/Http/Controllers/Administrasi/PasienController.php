@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\administrasi\Politujuan;
+use Yajra\DataTables\Facades\DataTables;
 
 class PasienController extends Controller
 
@@ -80,9 +81,10 @@ class PasienController extends Controller
         if($no == null)
         {
             $no = 1;
-        }if($no != null){
-            $no += 1;
+        }else if($no != null){
+            $no++;
         }
+
 
 
         $no_antrian = '';
@@ -178,5 +180,22 @@ class PasienController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function antrian(Request $request)
+    {
+
+
+        if(request()->ajax()){
+            $model = Politujuan::with('ibu')->where('status','MENUNGGU')->latest()->get();
+
+            return DataTables::of($model)
+            ->editColumn('created_at', function ($request){
+                 return $request->created_at->format('Y-m-d H:i');
+            })
+            ->make(true);
+        }
+
+        return view('administrasi.pasien.antrian');
     }
 }
