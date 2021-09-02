@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrasi;
 
 use App\Http\Controllers\Controller;
+use App\Models\poliibu\Inputpasien;
 use Illuminate\Http\Request;
 
 class AdministrasiController extends Controller
@@ -14,7 +15,11 @@ class AdministrasiController extends Controller
      */
     public function index()
     {
-        return view('administrasi.index');
+        $model = Inputpasien::count();
+
+        return view('administrasi.index',[
+            'model' => $model
+        ]);
     }
 
     /**
