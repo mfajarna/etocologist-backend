@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Administrasi\AdministrasiController;
+use App\Http\Controllers\Administrasi\PasienController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\gudangfarmasi\InformasiobatController;
 use App\Http\Controllers\gudangfarmasi\JenisobatController;
@@ -121,4 +123,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
         });
     });
+
+    //Route Administrasi
+    Route::resource('administrasi', AdministrasiController::class);
+
+    Route::resource('pasien', PasienController::class);
+    Route::prefix('administrasi')->group(function(){
+
+
+
+    });
+
+
 });
