@@ -199,7 +199,7 @@
       <h5 class="mb-0">
         <x-poli-administrasi-svg />
         <button class="btn btn-link collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
-          <a href="{{ url('administrasi') }}" class="">Administrasi</a>
+          <a href="{{ route('administrasi.index') }}" class="">Administrasi</a>
         </button>
       </h5>
     </div>
