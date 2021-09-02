@@ -51,6 +51,10 @@
 
                     </div>
                     <div class="form-group">
+                        <label for="harga">Harga Satuan</label>
+                        <input type="number" class="form-control" id="harga" name="harga" aria-describedby="harga" placeholder="Masukan Harga Obat" value={{ old('harga') }} >
+                    </div>
+                    <div class="form-group">
                         <label for="tanggal_periode">Tanggal Masuk Obat</label>
                         <div class='input-group date' id='tgl_masuk'>
                             <input type='text' class="form-control" id='tgl_masuk' name="tgl_masuk" placeholder="-- Pilih Bulan Periode --" value="{{ old('tgl_masuk') }}"/>

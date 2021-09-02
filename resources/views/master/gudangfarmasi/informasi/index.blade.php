@@ -60,6 +60,7 @@
                                     <th>Nama Obat</th>
                                     <th>Jenis Obat</th>
                                     <th>Sediaan</th>
+                                    <th>Harga</th>
                                     <th>Tanggal Masuk</th>
                             </thead>
                         </table>
@@ -138,6 +139,12 @@
                         },
                         {
                             "targets": 4,
+                            data: 'harga',
+                            name: 'harga',
+                            render: $.fn.dataTable.render.number( '.', ',', 2, 'Rp ' )
+                        },
+                        {
+                            "targets": 5,
                             data: 'tgl_masuk',
                             name: 'tgl_masuk'
                         }

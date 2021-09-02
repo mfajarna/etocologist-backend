@@ -12,7 +12,7 @@ class Informasiobat extends Model
     protected $table = 'informasiobats';
 
     protected $fillable = [
-        'obat_id', 'sediaan', 'tgl_masuk'
+        'obat_id', 'sediaan', 'tgl_masuk','harga'
     ];
 
 

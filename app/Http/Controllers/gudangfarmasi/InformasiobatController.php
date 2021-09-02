@@ -55,11 +55,13 @@ class InformasiobatController extends Controller
             'obat_id' => 'required',
             'sediaan' => 'required',
             'tgl_masuk' => 'required',
+            'harga' => 'required'
         ],
         [
             'obat_id.unique' => 'Nama obat sudah tersedia!',
             'sediaan.required' => 'Sediaan tidak boleh kosong!',
-            'tgl_masuk.required' => 'Tanggal tidak boleh kosong!'
+            'tgl_masuk.required' => 'Tanggal tidak boleh kosong!',
+            'harga.required' => 'Harga Obat Tidak Boleh Kosong'
         ]);
 
         $model = new Informasiobat;
@@ -67,6 +69,7 @@ class InformasiobatController extends Controller
         $model->obat_id = $request->obat_id;
         $model->sediaan = $request->sediaan;
         $model->tgl_masuk = $request->tgl_masuk;
+        $model->harga = $request->harga;
 
         $model->save();
 
