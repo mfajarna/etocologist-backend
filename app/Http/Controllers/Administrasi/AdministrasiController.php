@@ -14,7 +14,7 @@ class AdministrasiController extends Controller
      */
     public function index()
     {
-        return view('Administrasi.index');
+        return view('administrasi.index');
     }
 
     /**
