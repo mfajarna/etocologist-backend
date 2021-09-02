@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers\Administrasi;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\poliibu\Inputpasien;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\administrasi\Politujuan;
 
 class PasienController extends Controller
+
 {
+    use PasswordValidationRules;
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +42,97 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nama' => 'required|unique:dataibus,nama',
+            'umur' => 'required',
+            'pekerjaan' => 'required',
+            'htpt' => 'required',
+            'nama_suami' => 'max:255',
+            'umur_suami' => 'max:255',
+            'pekerjaan_suami' => 'max:255',
+            'alamat' => 'required',
+            'kelurahan' => 'required',
+            'posyandu' => 'required',
+            'no_telp' => 'required',
+            'email' => 'required|string|email|unique:users,email',
+            'password' => $this->passwordRules(),
+            'nama_poli_tujuan' => 'required'
+        ],[
+            'nama.required' => 'Nama Pasien Ibu Tidak Boleh Kosong!',
+            'nama.unique' => 'Nama Pasien Ibu Sudah Tersedia!',
+            'umur.required' => 'Umur Tidak Boleh Kosong!',
+            'pekerjaan.required' => 'Pekerjaan Tidak Boleh Kosong!',
+            'htpt.required' => 'HPHT Tidak Boleh Kosong!',
+            'alamat.required' => 'Alamat Tidak Boleh Kosong!',
+            'kelurahan.required' => 'Kelurahan Tidak Boleh Kosong!',
+            'posyandu.required' => 'Posyandu Tidak Boleh Kosong!',
+            'no_telp.required' => 'No Telepon Tidak Boleh Kosong!',
+            'nama_poli_tujuan.required' => 'Tujuan Poli Tidak Boleh Kosong'
+        ]);
+
+        $model = new Inputpasien;
+        $model_poli = new Politujuan;
+
+        $no = Politujuan::max('no');
+
+
+
+        if($no == null)
+        {
+            $no = 1;
+        }if($no != null){
+            $no += 1;
+        }
+
+
+        $no_antrian = '';
+
+        if($request->nama_poli_tujuan == 'Poli Ibu'){
+            $no_antrian = "POLIIBU_".$no;
+        }if($request->nama_poli_tujuan == 'Poli Anak'){
+            $no_antrian = "POLIANAK_".$no;
+        }if($request->nama_poli_tujuan == 'Poli Umum'){
+            $no_antrian = "POLIUMUM_".$no;
+        }
+
+        // dd($no_antrian);
+
+
+        $model->nama = $request->nama;
+        $model->umur = $request->umur;
+        $model->pekerjaan = $request->pekerjaan;
+        $model->htpt = $request->htpt;
+        $model->nama_suami = $request->nama_suami;
+        $model->umur_suami = $request->umur_suami;
+        $model->pekerjaan_suami = $request->pekerjaan_suami;
+        $model->alamat = $request->alamat;
+        $model->kelurahan = $request->kelurahan;
+        $model->posyandu = $request->posyandu;
+        $model->no_telp = $request->no_telp;
+
+        $model->save();
+        $id_ibu = $model->id;
+
+        $nama_pasien = $request->nama;
+
+        User::create([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'id_pasien' => $id_ibu,
+            'role_id' => 5,
+            'password' => Hash::make($request->password)
+        ]);
+
+        $model_poli->id_ibu = $id_ibu;
+        $model_poli->no = $no;
+        $model_poli->no_antrian = $no_antrian;
+        $model_poli->nama_poli_tujuan = $request->nama_poli_tujuan;
+        $model_poli->status = "MENUNGGU";
+
+        $model_poli->save();
+
+        return redirect()->route('pasien.index')->with('success','Pasien dengan nama '. $nama_pasien . ' berhasil ditambahkan!');
+
     }
 
     /**

@@ -5,8 +5,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="#">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        <a class="navbar-brand pt-0 text-purple h4 mt-2" href="{{ url('dashboard') }}">
+            <img src="{{ url('assets/img/LogoAdmin.png') }}" class="navbar-brand-img"/> E-TOCOLOGIST
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -79,7 +79,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('administrasi.index') }}">
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
@@ -90,8 +90,8 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="ni ni-shop text-blue" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Apotek') }}</span>
+                        <i class="ni ni-shop text-blue"></i>
+                        <span class="nav-link-text">{{ __('Apotek') }}</span>
                     </a>
 
                     <div class="collapse show" id="navbar-examples">
