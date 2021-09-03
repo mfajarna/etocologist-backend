@@ -7,6 +7,7 @@ use App\Http\Controllers\gudangfarmasi\InformasiobatController;
 use App\Http\Controllers\gudangfarmasi\JenisobatController;
 use App\Http\Controllers\gudangfarmasi\LaporanobatController;
 use App\Http\Controllers\gudangfarmasi\ObatController;
+use App\Http\Controllers\master\LayananController;
 use App\Http\Controllers\polianak\InputanakController;
 use App\Http\Controllers\polianak\KunjungankeadaanController;
 use App\Http\Controllers\polianak\RiwayatkeadaanController;
@@ -46,6 +47,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
             return view ('master.gudangfarmasi.index');
         });
 
+
         Route::prefix('/gudang-farmasi')->group(function(){
            Route::resource('jenisobat', JenisobatController::class);
            Route::resource('obat', ObatController::class);
@@ -58,6 +60,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
            Route::get('autofill', [InformasiobatController::class, 'autofill'])->name('informasi-obat.autofill');
            Route::get('remove-informasi', [InformasiobatController::class, 'removeinformasi'])->name('informasi-obat.removeinformasi');
         });
+
+        Route::resource('layanan', LayananController::class);
+        Route::get('remove-layanan', [LayananController::class,'remove'])->name('layanan.remove');
     });
 
     //Route Poli Ibu

@@ -52,7 +52,7 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        404 Not Found. Under Reconstruction
       </div>
     </div>
   </div>
@@ -67,7 +67,7 @@
     </div>
     <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        404 Not Found. Under Reconstruction
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@
     <div id="collapseFive" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"><x-poli-gudang-svg /><a href="#" class="h5 ml-2 font-weight-normal text-decoration-none text-dark">Gudang</a></li>
+            <li class="list-group-item"><x-poli-gudang-svg /><a href="{{ route('layanan.index') }}" class="h5 ml-2 font-weight-normal text-decoration-none text-dark">Layanan</a></li>
             <li class="list-group-item"><x-poli-gudang-svg /><a href="{{ url('master/gudang-farmasi') }}" class="h5 ml-2 font-weight-normal text-decoration-none text-dark">Gudang Farmasi</a></li>
         </ul>
       </div>
@@ -154,7 +154,7 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        404 Not Found. Under Reconstruction
       </div>
     </div>
   </div>
@@ -169,7 +169,7 @@
     </div>
     <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        404 Not Found. Under Reconstruction
       </div>
     </div>
   </div>
@@ -188,7 +188,7 @@
     <div id="collapseFive" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"><x-poli-gudang-svg /><a href="#" class="h5 ml-2 font-weight-normal text-decoration-none text-dark">Gudang</a></li>
+            <li class="list-group-item"><x-poli-gudang-svg /><a href="{{ route('layanan.index') }}" class="h5 ml-2 font-weight-normal text-decoration-none text-dark">Layanan</a></li>
             <li class="list-group-item"><x-poli-gudang-svg /><a href="{{ url('master/gudang-farmasi') }}" class="h5 ml-2 font-weight-normal text-decoration-none text-dark">Gudang Farmasi</a></li>
         </ul>
       </div>
