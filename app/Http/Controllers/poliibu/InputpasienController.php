@@ -4,14 +4,17 @@ namespace App\Http\Controllers\poliibu;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\layanan\Layanan;
 use App\Models\poliibu\Dataibu;
+use App\Models\rujukan\Rujukan;
 use App\Models\poliibu\Inputpasien;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Yajra\DataTables\Facades\DataTables;
-use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
+use Yajra\DataTables\Facades\DataTables;
+use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\rujukan\Detailrujukan;
 
 class InputpasienController extends Controller
 {
@@ -201,5 +204,62 @@ class InputpasienController extends Controller
             $data3->each->delete();
             $data4->each->delete();
         }
+    }
+
+    public function rujukanApotek(Request $request)
+    {
+        $model = Inputpasien::all();
+        $cari_kode = Rujukan::max('kode_rujukan');
+
+        if($cari_kode)
+        {
+            $nilai_kode = substr($cari_kode,3);
+            $kode = (int) $nilai_kode;
+            $kode = $kode+1;
+            $hasil_kode = "RUJ".str_pad($kode,3,"0",STR_PAD_LEFT);
+        }else{
+            $hasil_kode = 'RUJ001';
+        }
+
+        return view('poliibu.rujukan.index', [
+            'hasil_kode' => $hasil_kode,
+            'model' => $model
+        ]);
+    }
+
+    public function getLayanan(Request $request)
+    {
+        $id = $request->input('id');
+        $model = Layanan::find($id);
+
+        return response()->json($model);
+
+    }
+
+    public function addRujukan(Request $request)
+    {
+        $rujukan = $request->data_keluhan;
+
+        $id_ibu = $request->id_ibu;
+
+        $model = new Rujukan;
+
+        $model->id_ibu = $id_ibu;
+        $model->kode_rujukan = $request->kode_rujukan;
+        $model->catatan_obat = $request->catatan_obat;
+
+        $model->save();
+        $id_rujukan = $model->id;
+
+        foreach($rujukan as $item)
+        {
+            Detailrujukan::create([
+                'id_rujukan' => $id_rujukan,
+                'id_layanan' => $item['nama_layanan'],
+                'id_ibu' => $id_ibu
+            ]);
+        }
+
+        return redirect()->route('inputpasien.index')->with('success','Rujukan dengan kode '. $request->kode_rujukan . ' berhasil!');
     }
 }

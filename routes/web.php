@@ -53,7 +53,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
            Route::resource('obat', ObatController::class);
            Route::resource('informasi-obat', InformasiobatController::class);
            Route::resource('laporan-obat', LaporanobatController::class);
-
+           Route::get('getLayanan', [InputpasienController::class, 'getLayanan']);
 
            Route::get('remove', [JenisobatController::class, 'remove'])->name('jenisobat.remove');
            Route::get('hapus', [ObatController::class, 'hapus'])->name('obat.hapus');
@@ -88,7 +88,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::get('proseskehamilan-add/{id}', [ProseskehamilanController::class,'addData'])->name('proseskehamilan.add');
         Route::get('get-riwayat/{id}', [ProseskehamilanController::class,'getRiwayat']);
 
-
+        //Route Rujukan Apotek
+        Route::get('rujukan-apotek', [InputpasienController::class,'rujukanApotek'])->name('inputpasien.rujukan');
+        Route::post('rujukan-add', [InputpasienController::class,'addRujukan'])->name('inputpasien.addrujukan');
 
         //Route Grafik
         Route::resource('pemantauan-kehamilan', PemantauankehamilanController::class);
