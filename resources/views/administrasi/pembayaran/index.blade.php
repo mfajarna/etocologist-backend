@@ -3,6 +3,38 @@
             @include('layouts.headers.content')
 
      <div class="container-fluid mt--7">
+         @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <strong>Sukses!</strong> {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+        @if (session('fail'))
+                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                    <strong>Gagal Melakukan Transaksi!</strong> {{ session('fail') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+            @if (session('updatesuccess'))
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <strong>Sukses!</strong> {{ session('updatesuccess') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+            @if (session('hapus'))
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <strong>Sukses!</strong> {{ session('hapus') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
          <div class="row">
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card bg-white-default shadow">

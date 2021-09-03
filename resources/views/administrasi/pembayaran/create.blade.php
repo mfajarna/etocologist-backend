@@ -3,6 +3,8 @@
             @include('layouts.headers.content')
 
      <div class="container-fluid mt--7">
+
+
          <div class="row">
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card bg-white-default shadow">
@@ -11,7 +13,7 @@
                         <h2 class="text-black mb-0">Proses Pembayaran Layanan Klinik</h2>
                     </div>
                     <div class="card-body">
-                         <form action="{{ route('pasien.store') }}" class="w-full" method="POST">
+                         <form action="{{ route('pembayaran.store') }}" class="w-full" method="POST">
                             @csrf
                             <div class="row g-3">
                                      <div class="col-sm-4">
@@ -76,7 +78,7 @@
                             </table>
 
                             <h6 class="text-uppercase text-black ls-1 mb-1">List Obat</h6>
-                            <table class="table" id="products_table">
+                            <table class="table mb-4" id="products_table">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Nama Obat</th>
@@ -89,9 +91,9 @@
                                     @foreach ($model_obat as $item )
                                         <tr class="rowId">
                                             <td class="text-center">{{ $item->informasiobat->nama_obat }}</td>
-                                            <td class="text-center" >{{ $item->informasiobat->harga }}</td>
+                                            <td class="text-center" >Rp. {{ number_format($item->informasiobat->harga, 2 ,',','.',) }}</td>
                                             <td class="text-center" >{{ $item->quantity }}</td>
-                                            <td class="text-center" id="total">{{ $item->informasiobat->harga * $item->quantity }}</td>
+                                            <td class="text-center" id="total">Rp. {{ number_format($item->informasiobat->harga * $item->quantity, 2 ,',','.',) }}</td>
                                         </tr>
                                     @endforeach
                                     <tr>
@@ -100,8 +102,26 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <div class="row g-3">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="total_pembayaran" class="form-control-label">Total Harga Yang Harus Dibayar (Rp)</label>
+                                            <input type="number" class="form-control form-control-alternative" id="total_pembayaran" name="total_pembayaran" aria-describedby="total_pembayaran" placeholder="Masukan Nama Pasien Ibu" value="{{ $total_bayar }}" autofocus readonly >
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="total_bayar" class="form-control-label">Jumlah Total Bayar (Rp)</label>
+                                            <input type="number" class="form-control form-control-alternative" id="total_bayar" name="total_bayar" aria-describedby="total_pembayaran" placeholder="Masukan Total Bayar" value="{{ old('total_pembayaran') }}" autofocus >
+                                        </div>
+                                    </div>
 
-                            </h6>
+                                     <div class="col-sm-4">
+                                        <div class="form-group mt-3">
+                                            <button type="submit" class="btn btn-success mt-4">{{ __('Bayar') }}</button>
+                                        </div>
+                                    </div>
+                            </div>
                             </div>
                          </form>
                     </div>
@@ -117,6 +137,18 @@
 
 
           <script>
+
+            function cek()
+            {
+                var total_bayar = $('#total_pembayaran').val();
+                var jumlah_bayar = $('#total_bayar').val();
+
+                if(jumlah_bayar < total_bayar)
+                {
+                    alert('Tidak bisa melakukan transaksi, jumlah bayar tidak mencukupi!')
+                    return false
+                }
+            }
 
             function autofill(sel)
             {

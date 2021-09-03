@@ -40,7 +40,15 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $total_bayar = $request->total_bayar;
+        $total_pembayaran = $request->total_pembayaran;
+
+        if($total_bayar < $total_pembayaran)
+        {
+            return redirect()->route('pembayaran.index')->with('fail','Gagal Melakukan Transaksi, Total Bayar Tidak Mencukupi!');
+        }else{
+            return redirect()->route('pembayaran.index')->with('success','Berhasil Melakukan Transaksi!');
+        }
     }
 
     /**
@@ -113,6 +121,7 @@ class PembayaranController extends Controller
                 ->join('informasiobats','detailobats.id_informasiobat', '=' , 'informasiobats.id')
                 ->sum(DB::raw('detailobats.quantity * informasiobats.harga'));
 
+        $total_bayar = $sum + $sum2;
 
 
         return view('administrasi.pembayaran.create',[
@@ -120,6 +129,7 @@ class PembayaranController extends Controller
             'sum' => $sum,
             'sum2' => $sum2,
             'model_obat' => $model_obat,
+            'total_bayar' => $total_bayar
         ]);
     }
 }
