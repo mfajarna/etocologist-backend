@@ -104,7 +104,7 @@
                         <tr>
                             <td class="col-sm-6">
                                 <select name="data_keluhan[{{$index}}][nama_layanan]" id="nama_layanan" class="form-control" wire:model="data_keluhan.{{$index}}.nama_layanan" required>
-                                    <option value="" disabled selected>-- Pilih Nama Pasien --</option>
+                                    <option value="" disabled selected>-- Pilih Nama Layanan --</option>
                                         @foreach ($layanan as $item )
                                             <option value="{{ $item->id }}">{{ $item->nama_layanan }}</option>
                                         @endforeach
@@ -127,7 +127,7 @@
             </div>
              <div class="mt-2">
                     <button class="btn btn-success" type="submit">Simpan</button>
-                     <a href="{{ route('inputpasien.rujukan') }}" class="btn btn-outline-secondary" role="button">Kembali</a>
+                    <button class="btn btn-outline-secondary" type="reset">Reset</button>
                 </div>
 
             </form>

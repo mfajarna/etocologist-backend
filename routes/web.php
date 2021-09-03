@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Administrasi\AdministrasiController;
 use App\Http\Controllers\Administrasi\PasienController;
+use App\Http\Controllers\Administrasi\PembayaranController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\gudangfarmasi\InformasiobatController;
 use App\Http\Controllers\gudangfarmasi\JenisobatController;
@@ -136,6 +137,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::resource('pasien', PasienController::class);
     Route::get('antrian',[PasienController::class,'antrian'])->name('pasien.antrian');
+    Route::resource('pembayaran', PembayaranController::class);
+
+    Route::get('getRujukan',[PembayaranController::class,'getKodeRujukan'])->name('pembayaran.rujukan');
+    Route::get('pembayaran-pasien/{id}',[PembayaranController::class,'pembayaran']);
 
 
 });
