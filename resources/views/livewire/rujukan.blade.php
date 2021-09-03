@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                    <label for="catatan_obat">Catatan Obat</label>
+                                    <label for="catatan_obat">Catatan</label>
                                     <textarea class="form-control" id="catatan_obat" name="catatan_obat" aria-describedby="htpt" placeholder="Masukan Catatan Obat" value="{{ old('catata_obat') }}"></textarea>
                                     <small id="catatan_obat" class="form-text text-muted">*Catatan Obat</small>
                                 </div>
@@ -87,7 +87,6 @@
 
                     </div>
             </div>
-
             <div class="card-header">
                 Masukan Layanan
             </div>
@@ -102,7 +101,7 @@
                     <tbody>
                     @foreach ($data_keluhan as $index => $riwayat)
                         <tr>
-                            <td class="col-sm-6">
+                            <td class="col-sm-12">
                                 <select name="data_keluhan[{{$index}}][nama_layanan]" id="nama_layanan" class="form-control" wire:model="data_keluhan.{{$index}}.nama_layanan" required>
                                     <option value="" disabled selected>-- Pilih Nama Layanan --</option>
                                         @foreach ($layanan as $item )
@@ -121,10 +120,57 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <button class="btn btn-sm btn-secondary"
-                            wire:click.prevent="addRiwayat">+ Add Riwayat</button>
+                            wire:click.prevent="addRiwayat">+ Add Layanan</button>
                     </div>
                 </div>
             </div>
+            <div class="card-header">
+                Masukan Resep Obat
+            </div>
+            <div class="card-body">
+                <table class="table" id="products_table">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Nama Obat</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-center">Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($data_obat as $index => $riwayat)
+
+                        <tr>
+                            <td class="col-sm-6">
+                                <select name="data_obat[{{$index}}][nama_obat]" id="nama_obat" class="form-control" wire:model="data_obat.{{$index}}.nama_obat" required>
+                                    <option value="" disabled selected>-- Pilih Nama Obat --</option>
+                                        @foreach ($obat as $item )
+                                            <option value="{{ $item->id }}">{{ $item->obat->nama_obat }}</option>
+                                        @endforeach
+                                </select>
+                            </td>
+                            <td class="col-sm-4">
+                                <input type="number"
+                                       name="data_obat[{{$index}}][quantity]"
+                                       class="form-control"
+                                       wire:model="data_obat.{{$index}}.quantity"
+                                       placeholder="Masukan Jumlah Obat"
+                                       value="{{ old('quantity') }}"
+                                       />
+                            </td>
+                            <td>
+                                <a href="#" wire:click.prevent="removeObat({{$index}})">Hapus</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button class="btn btn-sm btn-secondary"
+                            wire:click.prevent="addObat">+ Add Resep Obat</button>
+                    </div>
+                </div>
              <div class="mt-2">
                     <button class="btn btn-success" type="submit">Simpan</button>
                     <button class="btn btn-outline-secondary" type="reset">Reset</button>

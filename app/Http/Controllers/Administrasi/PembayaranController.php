@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Administrasi;
 
-use App\Http\Controllers\Controller;
-use App\Models\rujukan\Detailrujukan;
-use App\Models\rujukan\Rujukan;
 use Illuminate\Http\Request;
+use App\Models\rujukan\Rujukan;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\gudangfarmasi\Informasiobat;
+use App\Models\rujukan\Detailobat;
+use App\Models\rujukan\Detailrujukan;
 
 class PembayaranController extends Controller
 {
@@ -97,9 +100,26 @@ class PembayaranController extends Controller
     public function pembayaran($id)
     {
         $model = Detailrujukan::with('ibu','rujukan','layanan')->where('id_rujukan', $id)->latest()->get();
+        $model_obat = Detailobat::with('ibu','rujukan','obat','informasiobat')->where('id_rujukan', $id)->latest()->get();
+
+
+
+        $sum = DB::table('detailrujukans')
+                ->join('layanans','detailrujukans.id_layanan', '=' ,'layanans.id')
+                ->where('id_rujukan', $id)
+                ->sum('harga');
+
+        $sum2 = DB::table('detailobats')
+                ->join('informasiobats','detailobats.id_informasiobat', '=' , 'informasiobats.id')
+                ->sum(DB::raw('detailobats.quantity * informasiobats.harga'));
+
+
 
         return view('administrasi.pembayaran.create',[
-            'model' => $model
+            'model' => $model,
+            'sum' => $sum,
+            'sum2' => $sum2,
+            'model_obat' => $model_obat,
         ]);
     }
 }

@@ -36,11 +36,12 @@
                              <option value="" disabled selected>-- Pilih Nama Obat --</option>
                             @foreach ($data as $item )
                             <option value="{{ $item->id }}">{{ $item->nama_obat }}</option>
-                                @endforeach
+                            @endforeach
                         </select>
                     <small id="obat_id" class="form-text text-muted">Pilih nama obat yang tersedia.</small>
                     </div>
                     <div class="form-group">
+                        <input type="hidden" class="form-control" id="nama_obat" name="nama_obat" aria-describedby="nama_obat" readonly>
                         <label for="jenis_obat">Jenis Obat</label>
                         <input type="text" class="form-control" id="jenis_obat" name="jenis_obat" aria-describedby="jenis_obat" placeholder="Masukan Nama Obat" disabled>
                         <small id="jenis_obat" class="form-text text-muted">Contoh nama obat: Panadol, Paramol, FG Trosis</small>
@@ -90,8 +91,11 @@
                     var json = data,
                     obj = JSON.parse(json);
 
+                    console.log('obj', obj);
+
                     if(id_obat != ""){
                     $('#jenis_obat').val(obj.jenis_obat);
+                    $('#nama_obat').val(obj.nama_obat);
                     }else if(id_obat == "")
                     {
                     $('#jenis_obat').val("");

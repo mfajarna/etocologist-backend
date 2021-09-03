@@ -14,6 +14,7 @@ use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
 use Yajra\DataTables\Facades\DataTables;
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\rujukan\Detailobat;
 use App\Models\rujukan\Detailrujukan;
 
 class InputpasienController extends Controller
@@ -239,6 +240,7 @@ class InputpasienController extends Controller
     public function addRujukan(Request $request)
     {
         $rujukan = $request->data_keluhan;
+        $obat = $request->data_obat;
 
         $id_ibu = $request->id_ibu;
 
@@ -247,6 +249,7 @@ class InputpasienController extends Controller
         $model->id_ibu = $id_ibu;
         $model->kode_rujukan = $request->kode_rujukan;
         $model->catatan_obat = $request->catatan_obat;
+
 
         $model->save();
         $id_rujukan = $model->id;
@@ -257,6 +260,18 @@ class InputpasienController extends Controller
                 'id_rujukan' => $id_rujukan,
                 'id_layanan' => $item['nama_layanan'],
                 'id_ibu' => $id_ibu
+            ]);
+        }
+
+        foreach($obat as $data)
+        {
+
+
+            Detailobat::create([
+                'id_rujukan' => $id_rujukan,
+                'id_informasiobat' => $data['nama_obat'],
+                'quantity' => $data['quantity'],
+                'id_ibu' => $id_ibu,
             ]);
         }
 

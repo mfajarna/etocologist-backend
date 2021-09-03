@@ -33,14 +33,75 @@
                                         </div>
                                     </div>
                                 </div>
+
+                            <div class="row g-3">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="kode_rujukan" class="form-control-label">Kode Rujukan</label>
+                                            <input type="text" class="form-control form-control-alternative" id="kode_rujukan" name="kode_rujukan" aria-describedby="kode_rujukan" value="{{ $model[0]['rujukan']['kode_rujukan'] }}" autofocus readonly >
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="catatan_obat" class="form-control-label">Catatan Obat</label>
+                                            <textarea  class="form-control form-control-alternative" id="catatan_obat" name="catatan_obat" aria-describedby="catatan_obat" placeholder="Masukan Alamat" readonly> {{ $model[0]['rujukan']['catatan_obat'] }} </textarea>
+                                        </div>
+                                    </div>
+                            </div>
                             <div class="row g-3">
                                 <div class="col-sm-12">
-                                    <h6 class="text-uppercase text-black ls-1 mb-1">Data Layanan</h6>
-                                    
-                          
-                                </div>
+                                    <h6 class="text-uppercase text-black ls-1 mb-1">List Layanan</h6>
 
+                                </div>
                             </div>
+                            <table class="table" id="products_table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Nama Layanan</th>
+                                        <th class="text-center">Harga</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($model as $item )
+                                        <tr>
+                                            <td class="text-center">{{ $item->layanan->nama_layanan }}</td>
+                                            <td class="text-center">Rp. {{number_format($item->layanan->harga,2,',','.',)  }}</td>
+                                        </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td class="text-center">Total Harga Layanan</td>
+                                        <td class="text-center">Rp. {{ number_format($sum, 2 ,',','.',) }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h6 class="text-uppercase text-black ls-1 mb-1">List Obat</h6>
+                            <table class="table" id="products_table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Nama Obat</th>
+                                        <th class="text-center">Harga</th>
+                                        <th class="text-center">Quantity</th>
+                                        <th class="text-center">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($model_obat as $item )
+                                        <tr class="rowId">
+                                            <td class="text-center">{{ $item->informasiobat->nama_obat }}</td>
+                                            <td class="text-center" >{{ $item->informasiobat->harga }}</td>
+                                            <td class="text-center" >{{ $item->quantity }}</td>
+                                            <td class="text-center" id="total">{{ $item->informasiobat->harga * $item->quantity }}</td>
+                                        </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td class="text-center" colspan=3>Total Harga Obat</td>
+                                        <td class="text-center">Rp. {{ number_format($sum2, 2 ,',','.',) }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            </h6>
                             </div>
                          </form>
                     </div>

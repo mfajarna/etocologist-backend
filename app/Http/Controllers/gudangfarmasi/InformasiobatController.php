@@ -64,12 +64,16 @@ class InformasiobatController extends Controller
             'harga.required' => 'Harga Obat Tidak Boleh Kosong'
         ]);
 
+
         $model = new Informasiobat;
 
         $model->obat_id = $request->obat_id;
         $model->sediaan = $request->sediaan;
         $model->tgl_masuk = $request->tgl_masuk;
         $model->harga = $request->harga;
+        $model->nama_obat = $request->nama_obat;
+
+
 
         $model->save();
 
@@ -136,10 +140,12 @@ class InformasiobatController extends Controller
         foreach ($data as $item)
         {
             $jenis_obat = $item->jenis_obat;
+            $nama_obat = $item->nama_obat;
         }
 
         $arr = [
-            'jenis_obat' => $jenis_obat
+            'jenis_obat' => $jenis_obat,
+            'nama_obat' => $nama_obat
         ];
 
         echo json_encode($arr);
