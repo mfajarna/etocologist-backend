@@ -1,7 +1,8 @@
 <x-administrasi>
 @section('content')
     @include('layouts.headers.cards',[
-        'model' => $model
+        'model' => $model,
+        'sum' => $sum
     ])
     <div class="container-fluid mt--7">
         <div class="row">

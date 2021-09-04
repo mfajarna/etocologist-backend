@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrasi;
 use App\Http\Controllers\Controller;
 use App\Models\poliibu\Inputpasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdministrasiController extends Controller
 {
@@ -16,10 +17,15 @@ class AdministrasiController extends Controller
     public function index()
     {
         $model = Inputpasien::count();
+        $sum = DB::table('checkouts')->sum('total_harga_pembayaran');
 
         return view('administrasi.index',[
-            'model' => $model
+            'model' => $model,
+            'sum' => $sum
         ]);
+
+
+
     }
 
     /**
