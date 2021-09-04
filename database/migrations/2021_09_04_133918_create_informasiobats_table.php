@@ -15,9 +15,10 @@ class CreateInformasiobatsTable extends Migration
     {
         Schema::create('informasiobats', function (Blueprint $table) {
             $table->id();
-            $table->integer('obat_id');
-            $table->integer('sediaan');
-            $table->date('tgl_masuk');
+                $table->integer('obat_id');
+                $table->integer('sediaan')->nullable();
+                $table->string('tgl_masuk')->nullable();
+                $table->integer('harga')->nullable();
             $table->timestamps();
         });
     }
