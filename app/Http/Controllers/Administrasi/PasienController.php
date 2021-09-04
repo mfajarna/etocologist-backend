@@ -72,6 +72,7 @@ class PasienController extends Controller
         ]);
 
         $model = new Inputpasien;
+        $model2 = new User;
         $model_poli = new Politujuan;
 
         $no = Politujuan::max('no');
@@ -115,15 +116,28 @@ class PasienController extends Controller
         $model->save();
         $id_ibu = $model->id;
 
+        $model2->name = $request->nama;
+        $model2->email = $request->email;
+        $model2->id_pasien = $request->id_ibu;
+        $model2->password = Hash::make($request->password);
+        $model2->role_id = 5;
+
+        $model2->save();
+        $id_user = $model2->id;
+
+        $pasien = Inputpasien::findOrFail($id_ibu);
+        $pasien->id_user = $id_user;
+        $pasien->save();
+
         $nama_pasien = $request->nama;
 
-        User::create([
-            'name' => $request->nama,
-            'email' => $request->email,
-            'id_pasien' => $id_ibu,
-            'role_id' => 5,
-            'password' => Hash::make($request->password)
-        ]);
+        // User::create([
+        //     'name' => $request->nama,
+        //     'email' => $request->email,
+        //     'id_pasien' => $id_ibu,
+        //     'role_id' => 5,
+        //     'password' => Hash::make($request->password)
+        // ]);
 
         $model_poli->id_ibu = $id_ibu;
         $model_poli->no = $no;
