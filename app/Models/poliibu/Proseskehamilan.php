@@ -3,6 +3,7 @@
 namespace App\Models\poliibu;
 
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -28,9 +29,15 @@ class Proseskehamilan extends Model
         'tindakan',
         'konseling',
         'nr',
-        'paraf'
+        'paraf',
+        'id_user'
     ];
 
+
+        public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'id_user');
+    }
 
     public function riwayat()
     {

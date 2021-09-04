@@ -89,6 +89,7 @@ class InputpasienController extends Controller
         $nama_pasien = $request->nama;
 
         $model = new Inputpasien;
+        $model2 = new User;
 
         $model->nama = $request->nama;
         $model->umur = $request->umur;
@@ -103,15 +104,27 @@ class InputpasienController extends Controller
         $model->no_telp = $request->no_telp;
 
         $model->save();
-
         $id_pasien = $model->id;
 
-        User::create([
-            'name' => $request->nama,
-            'email' => $request->email,
-            'id_pasien' => $id_pasien,
-            'password' => Hash::make($request->password)
-        ]);
+        $model2->name = $request->nama;
+        $model2->email = $request->email;
+        $model2->id_pasien =$id_pasien;
+        $model2->password = Hash::make($request->password);
+
+        $model2->save();
+        $id_user = $model2->id;
+
+        $pasien = Inputpasien::find($id_pasien);
+        $pasien->id_user = $id_user;
+        $pasien->save();
+
+
+        // User::create([
+        //     'name' => $request->nama,
+        //     'email' => $request->email,
+        //     'id_pasien' => $id_pasien,
+        //     'password' => Hash::make($request->password)
+        // ]);
 
         return redirect()->route('inputpasien.index')->with('success','Pasien dengan nama '. $nama_pasien . ' berhasil ditambahkan!');
     }

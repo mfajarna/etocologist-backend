@@ -3,6 +3,7 @@
 namespace App\Models\poliibu;
 
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -24,8 +25,14 @@ class Riwayatkehamilan extends Model
         'tinggi_badan',
         'kb_sebelum_hamil',
         'riwayat_penyakit',
-        'riwayat_persalinan'
+        'riwayat_persalinan',
+        'id_user'
     ];
+
+        public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'id_user');
+    }
 
     public function ibu()
     {
