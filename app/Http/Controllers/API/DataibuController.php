@@ -14,8 +14,8 @@ class DataibuController extends Controller
     {
         $limit = $request->input('limit', 100);
 
-        $model = Riwayatkehamilan::with('ibu')
-                        ->where('id_ibu', Auth::user()->id);
+        $model = Riwayatkehamilan::with('ibu')->all();
+
 
 
         return ResponseFormatter::success(
