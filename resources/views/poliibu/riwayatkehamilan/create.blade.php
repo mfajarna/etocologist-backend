@@ -26,7 +26,9 @@
         </div>
         @endif
 
-        @livewire('riwayatkehamilans')
+        @livewire('riwayatkehamilans',[
+            'model' => $model
+        ])
     </div>
 
 </x-content>

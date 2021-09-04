@@ -40,7 +40,7 @@ class RiwayatkehamilanController extends Controller
      */
     public function create()
     {
-        $model = Inputpasien::all();
+        $model = Inputpasien::with('user')->latest()->get();
 
         return view('poliibu.riwayatkehamilan.create',[
             'model' => $model
@@ -77,6 +77,7 @@ class RiwayatkehamilanController extends Controller
         ]);
 
         $model = new Riwayatkehamilan;
+        $id_user = $request->id_user;
 
         $model->id_ibu = $request->id_ibu;
         $model->gpa = $request->gpa;
@@ -86,6 +87,8 @@ class RiwayatkehamilanController extends Controller
         $model->kb_sebelum_hamil = $request->kb_sebelum_hamil;
         $model->riwayat_penyakit = $request->riwayat_penyakit;
         $model->riwayat_persalinan = $request->riwayatkehamilans;
+        $model->id_user = $id_user;
+
 
         $model->save();
 
@@ -93,7 +96,7 @@ class RiwayatkehamilanController extends Controller
 
         $riwayatKehamilan = $request->riwayatkehamilans;
 
-        foreach($riwayatKehamilan as $riwayat)
+        foreach($riwayatKehamilan as $riwayat )
         {
             Riwayatpersalinan::create([
                 'id_riwayat' => $id,
@@ -101,7 +104,8 @@ class RiwayatkehamilanController extends Controller
                 'umur' => $riwayat['umur_riwayat'],
                 'partus' => $riwayat['partus_riwayat'],
                 'cara' => $riwayat['cara_riwayat'],
-                'keterangan' => $riwayat['ket_riwayat']
+                'keterangan' => $riwayat['ket_riwayat'],
+                'id_user' => $id_user,
             ]);
         }
 

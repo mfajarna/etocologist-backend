@@ -132,6 +132,7 @@
                 <div class="card-body">
                 <div>
                     <input type="hidden" name="id_ibu" id="id_ibu" value={{ $data->ibu->id }} />
+                    <input type="hidden" name="id_user" id="id_user" value={{ $data->ibu->id_user }} />
                     <table class="table table-responsive" id="products_table">
                         <thead>
                         <tr class="d-flex">

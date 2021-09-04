@@ -19,9 +19,11 @@
                         <small id="id_ibu" class="form-text text-muted">*Nama Pasien Ibu Yang Sudah Terdaftar</small>
                         </div>
                     </div>
+                    <input type="hidden" class="form-control" id="id_user" name="id_user" aria-describedby="id_user" placeholder="Masukan Nama Suami" value="{{ old('id_user') }}" readonly>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="nama_suami">Nama Suami</label>
+                            <label for="id_user">Nama Suami</label>
+
                             <input type="text" class="form-control" id="nama_suami" name="nama_suami" aria-describedby="nama_suami" placeholder="Masukan Nama Suami" readonly>
                         </div>
                     </div>
@@ -77,8 +79,9 @@
                         </div>
                     </div>
                </div>
+            </div>
 
-               <div class="card-header">
+            <div class="card-header">
                    Data Riwayat Persalinan
                </div>
               <div class="card-body">
@@ -165,7 +168,6 @@
                             wire:click.prevent="addRiwayat">+ Add Riwayat</button>
                     </div>
                 </div>
-            </div>
 
                 <div class="mt-2">
                     <button class="btn btn-success" type="submit">Simpan</button>
@@ -191,6 +193,7 @@
 
 
                     $("#nama_suami").val(json.nama_suami)
+                    $('#id_user').val(json.id_user);
                });
             }
         </script>

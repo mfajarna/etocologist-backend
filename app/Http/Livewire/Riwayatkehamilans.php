@@ -14,7 +14,7 @@ class Riwayatkehamilans extends Component
     {
         $this->riwayatkehamilans = [
             [
-                'id_riwayat' => '4',
+                'id_riwayat' => '',
                 'no_riwayat' => '',
                 'umur_riwayat' => '',
                 'partus_riwayat' =>  '',
@@ -40,6 +40,7 @@ class Riwayatkehamilans extends Component
     {
 
         info($this->riwayatkehamilans);
+
 
         $model = Inputpasien::all();
         return view('livewire.riwayatkehamilans',[

@@ -19,7 +19,8 @@ class Riwayatpersalinan extends Model
         'umur',
         'partus',
         'cara',
-        'keterangan'
+        'keterangan',
+        'id_user'
     ];
 
     public function riwayat()
