@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\Models\poliibu\Proseskehamilan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\poliibu\Riwayatkehamilan;
 
@@ -15,12 +16,12 @@ class DataibuController extends Controller
         $limit = $request->input('limit', 100);
         $id = $request->input('id');
 
-        $model = Riwayatkehamilan::with('ibu')
-                            ->where('id_ibu', Auth::user()->id);
+        $model = Proseskehamilan::with('ibu')
+                            ->where('id_user', Auth::user()->id);
 
         if($id)
         {
-            $model = Riwayatkehamilan::with('ibu')->find($id);
+            $model = Proseskehamilan::with('ibu')->find($id);
 
             if($model)
             {
