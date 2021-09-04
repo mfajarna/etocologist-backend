@@ -14,13 +14,13 @@ class DataibuController extends Controller
     {
         $limit = $request->input('limit', 100);
 
-        $model = Riwayatkehamilan::with(['ibu'])
+        $model = Riwayatkehamilan::with('ibu')
                         ->where('id_ibu', Auth::user()->id);
 
 
         return ResponseFormatter::success(
             $model->paginate($limit),
-            'Data List transaksi Berhasil Di Ambil!'
+            'Data List Ibu Berhasil Di Ambil!'
         );
     }
 }
