@@ -72,9 +72,6 @@ class InformasiobatController extends Controller
         $model->tgl_masuk = $request->tgl_masuk;
         $model->harga = $request->harga;
 
-
-
-
         $model->save();
 
         return redirect()->route('informasi-obat.index')->with('success','Pemasukan obat berhasil ditambahkan!');
