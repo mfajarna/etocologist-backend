@@ -249,6 +249,7 @@ class InputpasienController extends Controller
         $model->id_ibu = $id_ibu;
         $model->kode_rujukan = $request->kode_rujukan;
         $model->catatan_obat = $request->catatan_obat;
+        $model->status = "BELUM DIBAYAR";
 
 
         $model->save();

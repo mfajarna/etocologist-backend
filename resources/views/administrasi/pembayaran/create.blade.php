@@ -1,3 +1,4 @@
+
  <x-administrasi>
     @section('content')
             @include('layouts.headers.content')
@@ -16,6 +17,11 @@
                          <form action="{{ route('pembayaran.store') }}" class="w-full" method="POST">
                             @csrf
                             <div class="row g-3">
+                                <input type="hidden" class="form-control form-control-alternative" id="id_ibu" name="id_ibu" aria-describedby="id_ibu" placeholder="Masukan Nama Pasien Ibu" value="{{ $model[0]['ibu']['id'] }}" readonly >
+                                <input type="hidden" class="form-control form-control-alternative" id="invoice" name="invoice" aria-describedby="invoice" placeholder="Masukan Nama Pasien Ibu" value="{{ $hasil_kode }}" readonly >
+                                <input type="hidden" class="form-control form-control-alternative" id="id_rujukan" name="id_rujukan" aria-describedby="id_rujukan" placeholder="Masukan Nama Pasien Ibu" value="{{ $id_rujukan }}" readonly >
+                                <input type="hidden" class="form-control form-control-alternative" id="total_obat" name="total_obat" aria-describedby="total_obat" placeholder="Masukan Nama Pasien Ibu" value="{{ $sum2 }}" readonly >
+                                <input type="hidden" class="form-control form-control-alternative" id="total_layanan" name="total_layanan" aria-describedby="total_layanan" placeholder="Masukan Nama Pasien Ibu" value="{{ $sum }}" readonly >
                                      <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="nama" class="form-control-label">Nama Pasien Ibu</label>

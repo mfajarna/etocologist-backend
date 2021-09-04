@@ -16,7 +16,8 @@ class Rujukan extends Model
         'id_ibu',
         'kode_rujukan',
         'id_layanan',
-        'catatan_obat'
+        'catatan_obat',
+        'status'
     ];
 
     public function ibu()
