@@ -16,7 +16,7 @@ class DataibuController extends Controller
         $limit = $request->input('limit', 100);
         $id = $request->input('id');
 
-        $model = Proseskehamilan::with('ibu')
+        $model = Proseskehamilan::with(['ibu','riwayat'])
                             ->where('id_user', Auth::user()->id);
 
         if($id)
