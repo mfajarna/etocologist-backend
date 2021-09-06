@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\DataanakController;
 use App\Http\Controllers\API\DataibuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('user', [UserController::class, 'fetch']);
     Route::get('data-pasien', [DataibuController::class,'all']);
     Route::get('data-grafik', [DataibuController::class,'getGrafik']);
+
+    Route::get('anak', [DataanakController::class,'getAnak']);
 });
 
 Route::post('login', [UserController::class, 'login']);
