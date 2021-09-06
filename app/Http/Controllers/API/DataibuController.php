@@ -50,7 +50,7 @@ class DataibuController extends Controller
         $limit = $request->input('limit', 100);
         $id = $request->input('id');
 
-        $data = DB::table('proseskehamilans ')
+        $data = DB::table('proseskehamilans')
                     ->select('umur_kehamilan','bb')
                     ->where('id_user', Auth::user()->id)
                     ->get();
