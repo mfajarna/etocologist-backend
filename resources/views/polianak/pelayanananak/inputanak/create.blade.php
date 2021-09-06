@@ -32,6 +32,7 @@
                 @csrf
                <div class="row g-3">
                     <div class="col-sm-4">
+                        <input type="hidden" class="form-control" id="id_user_ibu" name="id_user_ibu" aria-describedby="id_user_ibu" placeholder="Masukan Nama Anak" value="{{ old('id_user_ibu') }}">
                         <div class="form-group">
                             <label for="nama">Nama Anak Pasien Ibu</label>
                             <input type="text" class="form-control" id="nama" name="nama" aria-describedby="nama" placeholder="Masukan Nama Anak" value="{{ old('nama') }}">
@@ -245,6 +246,7 @@
                     $('#pekerjaan_suami').val(json.pekerjaan_suami)
                     $('#no_telp').val(json.no_telp)
                     $('#alamat').val(json.alamat)
+                    $('#id_user_ibu').val(json.id_user)
                });
             }
         </script>

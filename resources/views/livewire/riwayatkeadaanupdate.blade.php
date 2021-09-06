@@ -10,6 +10,7 @@
                  <input type="hidden" class="form-control" id="id_anak" name="id_anak" aria-describedby="id_anak" placeholder="Masukan Nama Ibu" value={{ $model->id }} readonly>
                  <div class="row g-3">
                     <div class="col-sm-4">
+                        <input type="hidden" class="form-control" id="id_user_ibu" name="id_user_ibu" aria-describedby="id_user_ibu" placeholder="Masukan Nama Ibu" value={{ $model->id_user_ibu }}  readonly>
                         <div class="form-group">
                             <label for="id_anak">Nama Anak</label>
                             <input type="text" class="form-control" id="nama_anak" name="nama_anak" aria-describedby="nama_anak" placeholder="Masukan Nama Ibu" value={{ $model->nama }}  readonly>

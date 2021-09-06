@@ -99,11 +99,13 @@ class KunjungankeadaanController extends Controller
 
         $id_riwayatkeadaan = $request->id_riwayatkeadaan;
         $id_anak = $request->id_anak;
+        $id_user_ibu = $request->id_user_ibu;
 
         foreach($kunjungan as $item)
         {
             Kunjungankeadaan::create([
                 'id_riwayatkeadaan' => $id_riwayatkeadaan,
+                'id_user_ibu' => $id_user_ibu,
                 'id_anak' => $id_anak,
                 'bulan' => $item['bulan'] ,
                 'umur' => $item['umur'],

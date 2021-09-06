@@ -14,6 +14,7 @@ class Riwayatkeadaan extends Model
 
     protected $fillable = [
            'id_anak',
+           'id_user_ibu',
            'tanggal',
            'minggu_ke',
            'umur_hari',

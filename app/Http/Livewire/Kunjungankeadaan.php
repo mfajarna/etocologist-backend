@@ -73,6 +73,7 @@ class Kunjungankeadaan extends Component
         $jenis_kelamin = '';
         $tempat_lahir = '';
         $bb = '';
+        $id_user_ibu = 0;
 
         foreach($data as $item){
             $id_riwayatkeadaan = $item['id'];
@@ -82,6 +83,7 @@ class Kunjungankeadaan extends Component
             $jenis_kelamin =  $item['anak']['jenis_kelamin'];
             $tempat_lahir =  $item['anak']['tempat_lahir'];
             $bb =  $item['anak']['bb'];
+            $id_user_ibu = $item['anak']['id_user_ibu'];
         }
 
 
@@ -92,7 +94,8 @@ class Kunjungankeadaan extends Component
             'tanggal_lahir' => $tanggal_lahir,
             'jenis_kelamin' => $jenis_kelamin,
             'tempat_lahir' => $tempat_lahir,
-            'bb' => $bb
+            'bb' => $bb,
+            'id_user_ibu' => $id_user_ibu
         ]);
     }
 }

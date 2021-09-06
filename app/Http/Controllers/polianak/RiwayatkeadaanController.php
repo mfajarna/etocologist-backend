@@ -194,12 +194,14 @@ class RiwayatkeadaanController extends Controller
         $data = $request->riwayatKeadaan;
 
         $id_anak = $request->id_anak;
+        $id_user_ibu = $request->id_user_ibu;
 
         foreach($data as $item)
         {
 
             Riwayatkeadaan::create([
                 'id_anak' => $id_anak,
+                'id_user_ibu' => $id_user_ibu,
                 'tanggal' => $item['tanggal'],
                 'minggu_ke' => $item['minggu_ke'],
                 'umur_hari' => $item['umur_hari'],

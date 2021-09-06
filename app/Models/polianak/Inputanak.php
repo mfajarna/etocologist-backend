@@ -2,6 +2,7 @@
 
 namespace App\Models\polianak;
 
+use App\Models\poliibu\Dataibu;
 use App\Models\poliibu\Inputpasien;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ class Inputanak extends Model
 
     protected $fillable = [
         'id_ibu',
+        'id_user_ibu',
         'nama',
         'tanggal_lahir',
         'jenis_kelamin',
@@ -31,6 +33,10 @@ class Inputanak extends Model
 
     public function ibu(){
         return $this->hasOne(Inputpasien::class, 'id', 'id_ibu');
+    }
+
+    public function useribu(){
+        return $this->hasOne(Dataibu::class, 'id', 'id_user_ibu');
     }
 
     public function getCreatedAttribute($value)

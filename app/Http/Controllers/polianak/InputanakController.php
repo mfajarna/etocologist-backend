@@ -82,6 +82,7 @@ class InputanakController extends Controller
 
         Inputanak::create([
             'id_ibu' => $request->id_ibu,
+            'id_user_ibu' =>$request->id_user_ibu,
             'nama' => ucwords($request->nama),
             'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,

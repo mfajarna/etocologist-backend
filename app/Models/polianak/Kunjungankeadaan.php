@@ -12,6 +12,7 @@ class Kunjungankeadaan extends Model
     protected $table = 'kunjungankeadaans';
 
     protected $fillable = [
+            'id_user_ibu',
            'id_riwayatkeadaan',
            'id_anak',
            'bulan',
