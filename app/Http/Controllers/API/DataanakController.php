@@ -10,14 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class DataanakController extends Controller
 {
-    public function getAnak()
+    public function getAnak(Request $request)
     {
+        $limit = $request->input('limit', 100);
         $model = Inputanak::with(['ibu'])
                             ->where('id_user_ibu', Auth::user()->id);
 
         return ResponseFormatter::success(
-            $model,
-            'Data Transaksi Berhasil Di Ambil'
+            $model->paginate($limit),
+            'Data List Ibu Berhasil Di Ambil!'
         );
     }
 
