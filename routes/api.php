@@ -19,6 +19,7 @@ use App\Http\Controllers\API\UserController;
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('user', [UserController::class, 'fetch']);
     Route::get('data-pasien', [DataibuController::class,'all']);
+    Route::get('data-grafik', [DataibuController::class,'getGrafik']);
 });
 
 Route::post('login', [UserController::class, 'login']);
