@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\poliibu\Proseskehamilan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\poliibu\Riwayatkehamilan;
+use Illuminate\Support\Facades\DB;
 
 class DataibuController extends Controller
 {
@@ -42,5 +43,22 @@ class DataibuController extends Controller
             $model->paginate($limit),
             'Data List Ibu Berhasil Di Ambil!'
         );
+    }
+
+    public function getGrafik(Request $request)
+    {
+        $limit = $request->input('limit', 100);
+        $id = $request->input('id');
+
+        $data = DB::table('proseskehamilans ')
+                    ->select('umur_kehamilan','bb')
+                    ->where('id_user', Auth::user()->id)
+                    ->get();
+
+                return ResponseFormatter::success(
+                    $data,
+                    'Data Grafik Berhasil Di Ambil'
+                );
+
     }
 }
