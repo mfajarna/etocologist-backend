@@ -45,10 +45,8 @@ class DataibuController extends Controller
         );
     }
 
-    public function getGrafik(Request $request)
+    public function getGrafik()
     {
-        $limit = $request->input('limit', 100);
-        $id = $request->input('id');
 
         $data = DB::table('proseskehamilans')
                     ->select('umur_kehamilan','bb')
@@ -59,6 +57,5 @@ class DataibuController extends Controller
                     $data,
                     'Data Grafik Berhasil Di Ambil'
                 );
-
     }
 }

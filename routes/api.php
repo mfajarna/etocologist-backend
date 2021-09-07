@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('data-grafik', [DataibuController::class,'getGrafik']);
 
     Route::get('anak', [DataanakController::class,'getAnak']);
+    Route::get('grafik-anak', [DataanakController::class,'getGrafikAnak']);
 });
 
 Route::post('login', [UserController::class, 'login']);
