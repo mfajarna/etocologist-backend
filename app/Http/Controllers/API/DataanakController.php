@@ -23,11 +23,13 @@ class DataanakController extends Controller
         );
     }
 
-    public function getGrafikAnak()
+    public function getGrafikAnak(Request $request)
     {
+        $id_anak = $request->input('id_anak');
         $data = DB::table('kunjungankeadaans')
             ->select('umur','bb')
             ->where('id_user_ibu', Auth::user()->id)
+            ->where('id_anak', $id_anak)
             ->get();
 
         return ResponseFormatter::success(
