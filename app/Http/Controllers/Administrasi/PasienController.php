@@ -120,6 +120,8 @@ class PasienController extends Controller
         $model2->email = $request->email;
         $model2->id_pasien = $request->id_ibu;
         $model2->password = Hash::make($request->password);
+        $model2->is_messages = 0;
+        $model2->pwd = $request->password;
         $model2->role_id = 5;
 
         $model2->save();
