@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->group(function(){
 
     Route::get('anak', [DataanakController::class,'getAnak']);
     Route::get('grafik-anak', [DataanakController::class,'getGrafikAnak']);
+    Route::post('update-messages/{id}',[UserController::class, 'updateMessages']);
 });
 
 Route::post('login', [UserController::class, 'login']);

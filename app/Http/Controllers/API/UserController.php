@@ -50,11 +50,33 @@ class UserController extends Controller
     }
 
     public function fetch(Request $request)
-    {   
+    {
         $data = $request->user();
         $model = Auth::user()->dataUser;
 
         $response = [$data,$model];
         return ResponseFormatter::success($response,'Data profile user berhasil diambil!');
+    }
+
+    public function updateMessages(Request $request,$id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->is_messages = $request->is_messages;
+        $user->save();
+
+        if($user)
+            {
+                return ResponseFormatter::success(
+                    $user,
+                    'berhasil diubah'
+                );
+            }else{
+                return ResponseFormatter::error([
+                    null,
+                    'Data Tidak Ada',
+                    404
+                ]);
+            }
     }
 }
