@@ -110,7 +110,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pasien.index') }}">
+                    <a class="nav-link active" href="{{ route('pasien.index') }}">
                         <i class="ni ni-circle-08 text-blue"></i> {{ __('Input Pasien') }}
                     </a>
                 </li>

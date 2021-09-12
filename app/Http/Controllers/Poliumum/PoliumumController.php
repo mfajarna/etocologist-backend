@@ -62,7 +62,7 @@ class PoliumumController extends Controller
                 'lab'=> $item['lab'],
                 'pemeriksaan' => $item['pemeriksaan'] ,
                 'theraphi' => $item['theraphi'],
-                'ket' => $item['theraphi'],
+                'ket' => $item['ket'],
             ]);
         }
 
