@@ -61,7 +61,7 @@
       <h5 class="mb-0">
         <x-poli-umum-svg />
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-         <a href="{{ route('poliumum.index') }}" class="">Poli Umum</a>
+         <a href="{{ route('poli-umum.index') }}" class="">Poli Umum</a>
         </button>
       </h5>
     </div>
@@ -158,7 +158,7 @@
       <h5 class="mb-0">
         <x-poli-umum-svg />
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-           <a href="{{ route('poliumum.index') }}" class="">Poli Umum</a>
+           <a href="{{ route('poli-umum.index') }}" class="">Poli Umum</a>
         </button>
       </h5>
     </div>

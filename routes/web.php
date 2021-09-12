@@ -145,7 +145,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('cetak-invoice/{id}', [AdministrasiController::class, 'cetakInvoice']);
 
     // Route Poli Umum
-    Route::resource('poliumum', PoliumumController::class);
+    Route::resource('poli-umum', PoliumumController::class);
 
     Route::prefix('poli-umum')->group(function () {
         Route::get('tambah-keadaan/{id}', [PoliumumController::class,'tambahKeadaan']);

@@ -1,4 +1,4 @@
-<form action="{{ route('poliumum.store') }}" class="w-full" method="POST">
+<form action="{{ route('poli-umum.store') }}" class="w-full" method="POST">
         @csrf
         <div class="card">
             <div class="card-header">
@@ -170,7 +170,7 @@
 
                 <div class="mt-2">
                     <button class="btn btn-success" type="submit">Simpan</button>
-                     <a href="{{ route('poliumum.index') }}" class="btn btn-outline-secondary" role="button">Kembali</a>
+                     <a href="{{ route('poli-umum.index') }}" class="btn btn-outline-secondary" role="button">Kembali</a>
                 </div>
             </div>
         </div>
@@ -255,8 +255,6 @@
                         ],
 
                     })
-
-
               })
 
           </script>
