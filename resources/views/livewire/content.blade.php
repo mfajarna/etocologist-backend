@@ -46,14 +46,9 @@
       <h5 class="mb-0">
         <x-poli-masas-svg />
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Poli Massas
+         <a href="{{ route('inputpasien.rujukan') }}" class="">Poli Massas</a>
         </button>
       </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        404 Not Found. Under Reconstruction
-      </div>
     </div>
   </div>
   <div class="card">
@@ -143,14 +138,9 @@
       <h5 class="mb-0">
         <x-poli-masas-svg />
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Poli Massas
+          <a href="{{ route('inputpasien.rujukan') }}" class="">Poli Massas</a>
         </button>
       </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        404 Not Found. Under Reconstruction
-      </div>
     </div>
   </div>
   <div class="card">
