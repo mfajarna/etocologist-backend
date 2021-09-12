@@ -61,14 +61,9 @@
       <h5 class="mb-0">
         <x-poli-umum-svg />
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-          Poli Umum
+         <a href="{{ route('poliumum.index') }}" class="">Poli Umum</a>
         </button>
       </h5>
-    </div>
-    <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        404 Not Found. Under Reconstruction
-      </div>
     </div>
   </div>
   <div class="card">
@@ -163,14 +158,9 @@
       <h5 class="mb-0">
         <x-poli-umum-svg />
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-          Poli Umum
+           <a href="{{ route('poliumum.index') }}" class="">Poli Umum</a>
         </button>
       </h5>
-    </div>
-    <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        404 Not Found. Under Reconstruction
-      </div>
     </div>
   </div>
   @endif

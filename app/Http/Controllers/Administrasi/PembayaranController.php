@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\administrasi\Checkout;
 use App\Models\gudangfarmasi\Informasiobat;
+use App\Models\gudangfarmasi\Laporanobat;
 use App\Models\rujukan\Detailobat;
 use App\Models\rujukan\Detailrujukan;
 
@@ -49,9 +50,11 @@ class PembayaranController extends Controller
             return redirect()->route('pembayaran.index')->with('fail','Gagal Melakukan Transaksi, Total Bayar Tidak Mencukupi!');
         }else{
 
+
             $today = date("Y-m-d");
             $model = new Checkout;
             $id = $request->id_rujukan;
+            $model_obat = Detailobat::with('ibu','rujukan','obat','informasiobat')->where('id_rujukan', $id)->latest()->get();
 
 
             $model->invoice = $request->invoice;
@@ -70,6 +73,26 @@ class PembayaranController extends Controller
             $model2 = Rujukan::findOrFail($id);
             $model2->status = "LUNAS";
             $model2->save();
+
+
+
+            foreach($model_obat as $item)
+            {
+                $informasiobat = Informasiobat::findOrFail($item->informasiobat->id);
+                $total_obat = $item->informasiobat->sediaan - $item->quantity;
+                $informasiobat->sediaan = $total_obat;
+
+                $informasiobat->save();
+
+                $laporanobat = new Laporanobat;
+
+                $laporanobat->obat_id = $item->informasiobat->obat_id;
+                $laporanobat->jumlah_keluaran = $item->quantity;
+                $laporanobat->tgl_keluar_obat = $today;
+                $laporanobat->id_informasiobat = $item->id_informasiobat;
+
+                $laporanobat->save();
+            }
 
 
 
@@ -166,6 +189,8 @@ class PembayaranController extends Controller
 
 
 
+
+
         return view('administrasi.pembayaran.create',[
             'model' => $model,
             'sum' => $sum,
@@ -174,7 +199,6 @@ class PembayaranController extends Controller
             'total_bayar' => $total_bayar,
             'hasil_kode' => $hasil_kode,
             'id_rujukan' => $id
-
         ]);
     }
 }

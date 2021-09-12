@@ -4,8 +4,6 @@
             @include('layouts.headers.content')
 
      <div class="container-fluid mt--7">
-
-
          <div class="row">
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card bg-white-default shadow">
@@ -82,7 +80,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-
                             <h6 class="text-uppercase text-black ls-1 mb-1">List Obat</h6>
                             <table class="table mb-4" id="products_table">
                                 <thead>
@@ -94,6 +91,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @foreach ($model_obat as $item )
                                         <tr class="rowId">
                                             <td class="text-center">{{ $item->informasiobat->nama_obat }}</td>

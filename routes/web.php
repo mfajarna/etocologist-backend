@@ -17,6 +17,7 @@ use App\Http\Controllers\poliibu\InputpasienController;
 use App\Http\Controllers\poliibu\PemantauankehamilanController;
 use App\Http\Controllers\poliibu\ProseskehamilanController;
 use App\Http\Controllers\poliibu\RiwayatkehamilanController;
+use App\Http\Controllers\Poliumum\PoliumumController;
 use App\Http\Livewire\Proseskehamilan;
 use App\Http\Livewire\Riwayatkeadaanupdate;
 use Illuminate\Support\Facades\Route;
@@ -141,6 +142,18 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::get('getRujukan',[PembayaranController::class,'getKodeRujukan'])->name('pembayaran.rujukan');
     Route::get('pembayaran-pasien/{id}',[PembayaranController::class,'pembayaran']);
+    Route::get('cetak-invoice/{id}', [AdministrasiController::class, 'cetakInvoice']);
+
+    // Route Poli Umum
+    Route::resource('poliumum', PoliumumController::class);
+
+    Route::prefix('poli-umum')->group(function () {
+        Route::get('tambah-keadaan/{id}', [PoliumumController::class,'tambahKeadaan']);
+        Route::get('getRiwayat/{id}',[PoliumumController::class,'getData']);
+        Route::prefix('tambah-keadaan')->group(function(){
+            Route::get('cetak-kartu-umum/{id}', [PoliumumController::class,'cetak']);
+        });
+    });
 
 
 });

@@ -71,6 +71,7 @@ class InformasiobatController extends Controller
         $model->sediaan = $request->sediaan;
         $model->tgl_masuk = $request->tgl_masuk;
         $model->harga = $request->harga;
+        $model->nama_obat = $request->nama_obat;
 
         $model->save();
 

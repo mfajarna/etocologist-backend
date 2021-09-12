@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\gudangfarmasi;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\gudangfarmasi\Obat;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\gudangfarmasi\Laporanobat;
+use Yajra\DataTables\Facades\DataTables;
 
 class LaporanobatController extends Controller
 {
@@ -12,9 +16,39 @@ class LaporanobatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('master.gudangfarmasi.laporanobat.index');
+        $obat = Obat::all();
+
+        if(request()->ajax()){
+             $input = $request->filter_tanggal_periode;
+             $bln = date('m', strtotime($input));
+             $tahun = date('Y');
+
+            // $data = Laporanobat::with(['obat','informasiobat'])->latest()->get();
+            if(!empty($request->filter_jenis_obat))
+            {
+                $data = DB::table('laporanobats')
+                        ->join('informasiobats', 'laporanobats.id_informasiobat', '=' , 'informasiobats.id')
+                        ->where('nama_obat', $request->filter_jenis_obat)
+                        ->whereMonth('tgl_keluar_obat', $bln)
+                        ->whereYear('tgl_keluar_obat', $tahun)
+                        ->get();
+            }else{
+
+             $data = DB::table('laporanobats')
+                        ->join('informasiobats', 'laporanobats.id_informasiobat', '=' , 'informasiobats.id')
+                        ->get();
+            }
+
+            return datatables()->of($data)->make(true);
+        }
+
+
+
+        return view('master.gudangfarmasi.laporanobat.index',[
+            'obat' => $obat,
+        ]);
     }
 
     /**

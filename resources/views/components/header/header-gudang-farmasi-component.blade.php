@@ -30,7 +30,11 @@
                         <x-slot name="content">
                             <!-- Team Settings -->
                             <x-jet-dropdown-link href="{{ route('informasi-obat.index') }}">
-                                {{ __('Pemasukan Obat Alkes') }}
+                                {{ __('Pemasukan Obat') }}
+                            </x-jet-dropdown-link>
+                            <hr class="dropdown-divider">
+                            <x-jet-dropdown-link href="{{ route('laporan-obat.index') }}">
+                                {{ __('Laporan Obat') }}
                             </x-jet-dropdown-link>
                         </x-slot>
                     </x-jet-dropdown>
