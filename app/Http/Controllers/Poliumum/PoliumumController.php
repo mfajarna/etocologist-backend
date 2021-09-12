@@ -27,7 +27,7 @@ class PoliumumController extends Controller
         }
 
 
-        return view('poliumum.index');
+        return view('Poliumum.index');
     }
 
     /**
