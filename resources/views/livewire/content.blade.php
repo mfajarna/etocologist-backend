@@ -13,9 +13,9 @@
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
        <ul class="list-group list-group-flush">
-            <li class="list-group-item"> <x-imunisasi-svg /><a href="#" class="h5 ml-2 font-weight-normal text-decoration-none text-dark">Pelayanan Imunisasi</a></li>
+
             <li class="list-group-item"><x-bayi-sakit-svg /><a href="{{ url('poli-anak/pelayanan-anak') }}" class="h5 ml-2 font-weight-normal text-decoration-none text-dark">Pelayanan Anak</a></li>
-            <li class="list-group-item"><x-tumbuh-kembang-svg /><a href="#" class="h5 ml-2 font-weight-normal text-decoration-none text-dark">Konsultasi Tumbuh Kembang</a></li>
+
         </ul>
       </div>
     </div>
