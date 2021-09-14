@@ -19,7 +19,7 @@ class UploadphotousgController extends Controller
 
          if($id)
          {
-             $photo = Uploadusg::where('id_ibu', $id)->get();
+             $photo = Uploadusg::where('id_ibu', $id)->orderBy('created_at', 'asc')->get();
 
             if($photo)
             {
