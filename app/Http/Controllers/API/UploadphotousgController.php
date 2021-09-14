@@ -15,11 +15,11 @@ class UploadphotousgController extends Controller
     public function all(Request $request)
     {
          $limit = $request->input('limit', 100);
-         $id = $request->input('id');
+         $id = $request->input('id_ibu');
 
          if($id)
          {
-             $photo = Uploadusg::find($id);
+             $photo = Uploadusg::where('id_ibu', $id);
 
             if($photo)
             {
