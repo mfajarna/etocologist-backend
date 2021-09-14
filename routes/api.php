@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\DataanakController;
 use App\Http\Controllers\API\DataibuController;
+use App\Http\Controllers\API\UploadphotousgController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
@@ -25,6 +26,9 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('anak', [DataanakController::class,'getAnak']);
     Route::get('grafik-anak', [DataanakController::class,'getGrafikAnak']);
     Route::post('update-messages/{id}',[UserController::class, 'updateMessages']);
+
+    Route::get('photo-usg', [UploadphotousgController::class, 'all']);
+    Route::post('upload-usg',[UploadphotousgController::class, 'addPhoto']);
 });
 
 Route::post('login', [UserController::class, 'login']);
