@@ -19,7 +19,7 @@ class UploadphotousgController extends Controller
 
          if($id)
          {
-             $photo = Uploadusg::where('id_ibu', $id);
+             $photo = Uploadusg::where('id_ibu', $id)->get();
 
             if($photo)
             {
