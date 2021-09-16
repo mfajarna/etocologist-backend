@@ -57,7 +57,6 @@ class PasienController extends Controller
             'no_telp' => 'required',
             'email' => 'required|string|email|unique:users,email',
             'password' => $this->passwordRules(),
-            'nama_poli_tujuan' => 'required'
         ],[
             'nama.required' => 'Nama Pasien Ibu Tidak Boleh Kosong!',
             'nama.unique' => 'Nama Pasien Ibu Sudah Tersedia!',
@@ -68,12 +67,10 @@ class PasienController extends Controller
             'kelurahan.required' => 'Kelurahan Tidak Boleh Kosong!',
             'posyandu.required' => 'Posyandu Tidak Boleh Kosong!',
             'no_telp.required' => 'No Telepon Tidak Boleh Kosong!',
-            'nama_poli_tujuan.required' => 'Tujuan Poli Tidak Boleh Kosong'
         ]);
 
         $model = new Inputpasien;
         $model2 = new User;
-        $model_poli = new Politujuan;
 
         $no = Politujuan::max('no');
 
@@ -133,21 +130,6 @@ class PasienController extends Controller
 
         $nama_pasien = $request->nama;
 
-        // User::create([
-        //     'name' => $request->nama,
-        //     'email' => $request->email,
-        //     'id_pasien' => $id_ibu,
-        //     'role_id' => 5,
-        //     'password' => Hash::make($request->password)
-        // ]);
-
-        $model_poli->id_ibu = $id_ibu;
-        $model_poli->no = $no;
-        $model_poli->no_antrian = $no_antrian;
-        $model_poli->nama_poli_tujuan = $request->nama_poli_tujuan;
-        $model_poli->status = "MENUNGGU";
-
-        $model_poli->save();
 
         return redirect()->route('pasien.index')->with('success','Pasien dengan nama '. $nama_pasien . ' berhasil ditambahkan!');
 

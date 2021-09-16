@@ -59,7 +59,7 @@
                             <input type="number" class="form-control" id="no_telp" name="no_telp" aria-describedby="no_telp" placeholder="Masukan Nomor Telepon" value="{{ old('no_telp') }}" readonly>
                             <small id="no_telp" class="form-text text-muted">*Nomor telepon pasien yang dapat dihubungi</small>
                         </div>
-                    </div>
+                        </div>
                     </div>
                     </div>
                 </div>

@@ -68,9 +68,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     });
 
     //Route Poli Ibu
-    Route::get('/poli-ibu', function () {
-            return view ('poliibu.index');
-        });
+    Route::get('poli-ibu', [InputpasienController::class, 'getData'])->name('inputpasien.data');
+    Route::post('edit-poli-ibu',[InputpasienController::class,'editData'])->name('inputpasien.editstatus');
 
     Route::prefix('/poli-ibu')->group(function() {
         //Route Input Data Pasien Ibu
@@ -111,9 +110,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::get('getIbu', [RiwayatkehamilanController::class, 'getDataPasien']);
         Route::get('getDataAnak', [RiwayatkeadaanController::class, 'getDataANak']);
 
-        Route::get('pelayanan-anak', function(){
-            return view('polianak.pelayanananak.index');
-        });
+        Route::get('pelayanan-anak',[InputanakController::class,'getData'])->name('pelayanananak.data');
 
         Route::get('getRiwayatAnak/{id}',[RiwayatkeadaanController::class, 'getRiwayatKeadaanAnak']);
         Route::post('addRiwayatAnak', [RiwayatkeadaanController::class, 'addData'])->name('riwayatkeadaan.addData');
@@ -154,6 +151,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
             Route::get('cetak-kartu-umum/{id}', [PoliumumController::class,'cetak']);
         });
     });
+
+
+    //Route Antrian
+    Route::get('antrian-poli', [AdministrasiController::class, 'AntrianPoli'])->name('antrian.poli');
+    Route::post('tambah-antrian', [AdministrasiController::class, 'tambahAntrianPoli'])->name('antrian.tambah');
 
 
 });

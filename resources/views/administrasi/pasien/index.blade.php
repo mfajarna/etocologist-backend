@@ -164,22 +164,6 @@
                         </div>
                     </div>
                </div>
-                <div class="row g-3">
-                    <div class="col-sm-4">
-                        <label for="tujuan_poli" class="form-control-label">Poli Tujuan</label>
-                        <select name="nama_poli_tujuan" id="nama_poli_tujuan" class="form-control form-control-alternative"  required>
-                        <option value="" disabled selected>-- Poli Tujuan --</option>
-                            <option value="Poli Ibu">Poli Ibu</option>
-                            <option value="Poli Anak">Poli Anak</option>
-                            <option value="Poli Umum">Poli Umum</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4">
-                    </div>
-                    <div class="col-sm-4">
-
-                    </div>
-               </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success mt-4">{{ __('Simpan') }}</button>
                 </div>

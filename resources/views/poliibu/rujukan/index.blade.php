@@ -12,7 +12,7 @@
        @if($errors->any())
         <div class="mb-5">
             <div class="alert alert-danger" role="alert">
-                <h4 class="alert-heading">Terjadi kesalahan dalam pengimputan data jenis obat!</h4>
+                <h4 class="alert-heading">Terjadi kesalahan dalam pengimputan data!</h4>
                 <p>
                     <ul>
                             @foreach ( $errors->all() as $error )

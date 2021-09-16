@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\polianak\Inputanak;
 use App\Models\poliibu\Inputpasien;
 use App\Http\Controllers\Controller;
+use App\Models\antrian\Antrianpolianak;
 use Yajra\DataTables\Facades\DataTables;
 
 class InputanakController extends Controller
@@ -161,5 +162,25 @@ class InputanakController extends Controller
         if($data){
             $data->each->delete();
         }
+    }
+
+    public function getData(Request $request)
+    {
+
+        if(request()->ajax()){
+            $data = Antrianpolianak::with('ibu')->latest()->get();
+
+            return DataTables::of($data)
+            ->addColumn('aksi', function($data){
+                $button = "<button class='btn btn-danger' id='". $data->id ."'>SELESAI</button>";
+
+                return $button;
+            })
+            ->rawColumns(['aksi'])
+            ->make(true);
+        }
+
+
+        return view('polianak.pelayanananak.index');
     }
 }

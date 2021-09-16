@@ -5,11 +5,40 @@
         <div class="row">
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card bg-white-default shadow">
+             @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <strong>Sukses!</strong> {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+            @if (session('updatesuccess'))
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <strong>Sukses!</strong> {{ session('updatesuccess') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+            @if (session('hapus'))
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <strong>Sukses!</strong> {{ session('hapus') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
                     <div class="card-header bg-transparent">
                         <h6 class="text-uppercase text-black ls-1 mb-1">Antrian</h6>
                         <h2 class="text-black mb-0">List Antrian Pengunjung</h2>
                     </div>
                     <div class="card-body">
+
+                            <a class="btn btn-success" href="{{ route('antrian.poli') }}" role="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="15px" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;stroke:#FFFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title>8.add</title><g id="_8.add" data-name="8.add"><circle class="cls-1" cx="12" cy="12" r="11"/><line class="cls-1" x1="12" y1="6" x2="12" y2="18"/><line class="cls-1" x1="18" y1="12" x2="6" y2="12"/></g></svg>
+                            Tambah Antrian</a>
+
                         <div class="table-responsive mt-4">
                             <table id="table_data" class="table table-bordered table-striped">
                                     <thead>

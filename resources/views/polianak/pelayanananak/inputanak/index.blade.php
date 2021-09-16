@@ -56,6 +56,7 @@
                          </button>
 
 
+
                             <button class="btn btn-success" id="buttonhps_nonaktif_all" onClick="hapusOnClick()" disabled>
                             <svg version="1.1" width="15px" class="mr-1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	                            viewBox="0 1 78.667 78.67" style="enable-background:new 0 0 78.667 78.67;" xml:space="preserve">

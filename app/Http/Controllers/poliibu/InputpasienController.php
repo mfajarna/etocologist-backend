@@ -14,6 +14,7 @@ use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
 use Yajra\DataTables\Facades\DataTables;
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\antrian\Antrianpoliibu;
 use App\Models\rujukan\Detailobat;
 use App\Models\rujukan\Detailrujukan;
 
@@ -277,5 +278,35 @@ class InputpasienController extends Controller
         }
 
         return redirect()->route('inputpasien.index')->with('success','Rujukan dengan kode '. $request->kode_rujukan . ' berhasil!');
+    }
+
+        public function getData(Request $request)
+    {
+
+         $data = Antrianpoliibu::with('ibu')->latest()->get();
+        if(request()->ajax()){
+            $data = Antrianpoliibu::with('ibu')->where('status', 'MENUNGGU')->latest()->get();
+
+            return DataTables::of($data)
+            ->addColumn('aksi', function($data){
+                $button = "<button class='update btn btn-danger' id='". $data->id ."'>SELESAI</button>";
+
+                return $button;
+            })
+            ->rawColumns(['aksi'])
+            ->make(true);
+        }
+
+        return view('poliibu.index');
+    }
+
+    public function editData(Request $request)
+    {
+        $id = $request->id;
+        $model = Antrianpoliibu::find($id);
+
+        $model->status = "SELESAI";
+
+        $model->save();
     }
 }
