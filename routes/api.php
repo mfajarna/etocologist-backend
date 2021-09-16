@@ -36,6 +36,7 @@ Route::middleware('auth:sanctum')->group(function(){
 
 
     Route::get('get-data-ibu', [DataibuController::class, 'getDataIbu']);
+    Route::get('get-proses-kehamilan',[DataibuController::class, 'getDataProsesKehamilan']);
 });
 
 Route::post('login', [UserController::class, 'login']);

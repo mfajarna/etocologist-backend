@@ -136,4 +136,18 @@ class DataibuController extends Controller
        }
 
     }
+
+    public function getDataProsesKehamilan(Request $request)
+    {
+
+        try{
+            $id_ibu = $request->input('id_ibu');
+            $model = Proseskehamilan::with(['ibu','riwayat'])
+                        ->where('id_ibu', $id_ibu)->get();
+
+            return ResponseFormatter::success($model, 'Berhasil input data');
+        }catch(Exception $e){
+            return ResponseFormatter::error($e->getMessage(),'Gagal Ambil Data');
+        }
+    }
 }
