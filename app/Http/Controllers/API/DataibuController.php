@@ -105,4 +105,22 @@ class DataibuController extends Controller
            return ResponseFormatter::error($e->getMessage(),'Gagal Input Data');
        }
     }
+
+    public function getDataAntrian(Request $request)
+    {
+        try{
+        $id_ibu = $request->input('id_ibu');
+
+        $data = Antrianpoliibu::with('ibu')
+                ->where('id_ibu', $id_ibu)
+                ->where('status', 'MENUNGGU')
+                ->latest()->get();
+
+         return ResponseFormatter::success($data, 'Berhasil Ambil data');
+        }catch(Exception $e)
+       {
+           return ResponseFormatter::error($e->getMessage(),'Gagal Ambil Data');
+       }
+
+    }
 }
