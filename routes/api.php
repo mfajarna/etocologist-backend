@@ -40,6 +40,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('get-grafik-ibu',[DataibuController::class, 'getGrafikIbu']);
 
     Route::get('get-data-anak', [DataanakController::class, 'getAllAnak']);
+    Route::get('get-grafik-anak', [DataanakController::class, 'getGrafikAllAnak']);
 });
 
 Route::post('login', [UserController::class, 'login']);

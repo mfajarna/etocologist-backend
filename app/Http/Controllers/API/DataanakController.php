@@ -50,5 +50,19 @@ class DataanakController extends Controller
         }
     }
 
+        public function getGrafikAllAnak(Request $request)
+    {
+        $id_anak = $request->input('id_anak');
+        $data = DB::table('kunjungankeadaans')
+            ->select('umur','bb')
+            ->where('id_anak', $id_anak)
+            ->get();
+
+        return ResponseFormatter::success(
+            $data,
+            'Data Grafik Berhasil Di Ambil'
+        );
+    }
+
 
 }
