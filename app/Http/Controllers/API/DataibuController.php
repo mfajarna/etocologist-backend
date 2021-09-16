@@ -4,11 +4,12 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Helpers\ResponseFormatter;
-use App\Http\Controllers\Controller;
-use App\Models\poliibu\Proseskehamilan;
-use Illuminate\Support\Facades\Auth;
-use App\Models\poliibu\Riwayatkehamilan;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\antrian\Antrianpoliibu;
+use App\Models\poliibu\Proseskehamilan;
+use App\Models\poliibu\Riwayatkehamilan;
 
 class DataibuController extends Controller
 {
@@ -57,5 +58,26 @@ class DataibuController extends Controller
                     $data,
                     'Data Grafik Berhasil Di Ambil'
                 );
+    }
+
+    public function getAntrian()
+    {
+        $no_poliibu = Antrianpoliibu::max('no_antrian');
+
+        if($no_poliibu)
+        {
+            $nilai_kode = substr($no_poliibu,7);
+            $kode = (int) $nilai_kode;
+            $kode = $kode+1;
+            $antrian_poliibu = "POLIIBU".str_pad($kode,3,"0",STR_PAD_LEFT);
+        }else{
+            $antrian_poliibu = 'POLIIBU001';
+        }
+
+         return ResponseFormatter::success(
+                    $antrian_poliibu,
+                    'Data Grafik Berhasil Di Ambil'
+        );
+
     }
 }
