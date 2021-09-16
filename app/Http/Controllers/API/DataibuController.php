@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Helpers\ResponseFormatter;
 use Illuminate\Support\Facades\DB;
@@ -79,5 +80,29 @@ class DataibuController extends Controller
                     'Data Grafik Berhasil Di Ambil'
         );
 
+    }
+
+    public function antrianPoliIbu(Request $request)
+    {
+        try{
+            $request->validate([
+                'id_ibu' => 'required',
+                'no_antrian' => 'required',
+                'nama_poli' => 'required',
+                'status' => 'required'
+            ]);
+
+            $antrian = Antrianpoliibu::create([
+                'id_ibu' => $request->id_ibu,
+                'no_antrian' => $request->no_antrian,
+                'nama_poli' => $request->no_antrian,
+                'status' => $request->status
+            ]);
+
+            return ResponseFormatter::success($antrian, 'Berhasil input data');
+        }catch(Exception $e)
+       {
+           return ResponseFormatter::error($e->getMessage(),'Gagal Input Data');
+       }
     }
 }

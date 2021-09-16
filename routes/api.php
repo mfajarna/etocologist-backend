@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('upload-usg',[UploadphotousgController::class, 'addPhoto']);
 
     Route::get('getantrianibu',[DataibuController::class,'getAntrian']);
+    Route::post('input-antrian-ibu', [DataibuController::class,'antrianPoliIbu']);
 });
 
 Route::post('login', [UserController::class, 'login']);
