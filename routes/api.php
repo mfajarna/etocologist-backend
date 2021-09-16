@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('photo-usg', [UploadphotousgController::class, 'all']);
     Route::post('upload-usg',[UploadphotousgController::class, 'addPhoto']);
 
-    Route::get('getantrianibu',[DataanakController::class,'getAntrian']);
+    Route::get('getantrianibu',[DataibuController::class,'getAntrian']);
 });
 
 Route::post('login', [UserController::class, 'login']);
