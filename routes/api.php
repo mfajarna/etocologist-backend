@@ -33,6 +33,9 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('getantrianibu',[DataibuController::class,'getAntrian']);
     Route::post('input-antrian-ibu', [DataibuController::class,'antrianPoliIbu']);
     Route::get('get-no-antrian-ibu', [DataibuController::class,'getDataAntrian']);
+
+
+    Route::get('get-data-ibu', [DataibuController::class, 'getDataIbu']);
 });
 
 Route::post('login', [UserController::class, 'login']);

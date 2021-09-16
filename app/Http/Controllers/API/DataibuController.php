@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\antrian\Antrianpoliibu;
+use App\Models\poliibu\Inputpasien;
 use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
 
@@ -109,14 +110,26 @@ class DataibuController extends Controller
     public function getDataAntrian(Request $request)
     {
         try{
-        $id_ibu = $request->input('id_ibu');
+            $id_ibu = $request->input('id_ibu');
 
-        $data = Antrianpoliibu::with('ibu')
-                ->where('id_ibu', $id_ibu)
-                ->where('status', 'MENUNGGU')
-                ->latest()->get();
+            $data = Antrianpoliibu::with('ibu')
+                    ->where('id_ibu', $id_ibu)
+                    ->where('status', 'MENUNGGU')
+                    ->latest()->get();
 
-         return ResponseFormatter::success($data, 'Berhasil Ambil data');
+            return ResponseFormatter::success($data, 'Berhasil Ambil data');
+        }catch(Exception $e)
+       {
+           return ResponseFormatter::error($e->getMessage(),'Gagal Ambil Data');
+       }
+    }
+
+    public function getDataIbu(Request $request)
+    {
+        try{
+            $model = Proseskehamilan::with('ibu')->latest()->get();
+
+            return ResponseFormatter::success($model, 'Berhasil Ambil data');
         }catch(Exception $e)
        {
            return ResponseFormatter::error($e->getMessage(),'Gagal Ambil Data');
