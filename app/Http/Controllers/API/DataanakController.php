@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Helpers\ResponseFormatter;
 use App\Models\polianak\Inputanak;
@@ -36,7 +37,18 @@ class DataanakController extends Controller
             $data,
             'Data Grafik Berhasil Di Ambil'
         );
-
     }
+
+    public function getAllAnak()
+    {
+        try{
+            $data = Inputanak::with(['ibu'])->latest()->get();
+
+            return ResponseFormatter::success($data, 'Berhasil ambil data');
+        }catch(Exception $e){
+            return ResponseFormatter::error($e->getMessage(),'Gagal Ambil Data');
+        }
+    }
+
 
 }

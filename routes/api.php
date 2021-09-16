@@ -38,6 +38,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('get-data-ibu', [DataibuController::class, 'getDataIbu']);
     Route::get('get-proses-kehamilan',[DataibuController::class, 'getDataProsesKehamilan']);
     Route::get('get-grafik-ibu',[DataibuController::class, 'getGrafikIbu']);
+
+    Route::get('get-data-anak', [DataanakController::class, 'getAllAnak']);
 });
 
 Route::post('login', [UserController::class, 'login']);
