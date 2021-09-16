@@ -127,7 +127,7 @@ class DataibuController extends Controller
     public function getDataIbu(Request $request)
     {
         try{
-            $model = Inputpasien::with('ibu')->latest()->get();
+            $model = Inputpasien::with('user')->latest()->get();
 
             return ResponseFormatter::success($model, 'Berhasil Ambil data');
         }catch(Exception $e)
