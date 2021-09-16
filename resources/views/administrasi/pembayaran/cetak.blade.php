@@ -91,6 +91,7 @@
                 </tbody>
             </table>
 
+            {{ dd($detail_obat) }}
             <table class="table mb-4" id="products_table">
                 <thead>
                     <tr>
@@ -135,6 +136,6 @@
         </div>
     </footer>
     <script>
-        window.print();
+
     </script>
 </html>
