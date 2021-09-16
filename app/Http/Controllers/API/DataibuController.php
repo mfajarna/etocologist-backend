@@ -150,4 +150,23 @@ class DataibuController extends Controller
             return ResponseFormatter::error($e->getMessage(),'Gagal Ambil Data');
         }
     }
+
+
+    public function getGrafikIbu(Request $request)
+    {
+
+        $id_ibu = $request->input('id_ibu');
+
+        try{
+             $data = DB::table('proseskehamilans')
+                    ->select('umur_kehamilan','bb')
+                    ->where('id_ibu', $id_ibu)
+                    ->get();
+
+            return ResponseFormatter::success($data, 'Berhasil ambil data');
+        }catch(Exception $e){
+            return ResponseFormatter::error($e->getMessage(),'Gagal Ambil Data');
+        }
+    }
+
 }
