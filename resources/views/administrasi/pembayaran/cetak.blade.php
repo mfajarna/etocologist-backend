@@ -90,8 +90,6 @@
                         </tr>
                 </tbody>
             </table>
-
-
             <table class="table mb-4" id="products_table">
                 <thead>
                     <tr>
@@ -136,6 +134,6 @@
         </div>
     </footer>
     <script>
-
+        window.print();
     </script>
 </html>

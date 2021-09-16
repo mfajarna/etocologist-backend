@@ -110,9 +110,8 @@ class AdministrasiController extends Controller
 
     public function cetakInvoice($id)
     {
-        $model= Checkout::with(['ibu','rujukan'])->latest()->get();
+        $model= Checkout::with(['ibu','rujukan'])->where('id', $id)->get();
 
-        $id_rujukan = 0;
 
         foreach($model as $item)
         {
