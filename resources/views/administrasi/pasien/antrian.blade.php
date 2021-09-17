@@ -39,7 +39,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="15px" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;stroke:#FFFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title>8.add</title><g id="_8.add" data-name="8.add"><circle class="cls-1" cx="12" cy="12" r="11"/><line class="cls-1" x1="12" y1="6" x2="12" y2="18"/><line class="cls-1" x1="18" y1="12" x2="6" y2="12"/></g></svg>
                             Tambah Antrian</a>
 
-                        <div class="table-responsive mt-4">
+                        {{-- <div class="table-responsive mt-4">
                             <table id="table_data" class="table table-bordered table-striped">
                                     <thead>
                                         <tr align="center">
@@ -51,7 +51,7 @@
                                         </tr>
                                     </thead>
                             </table>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -67,60 +67,60 @@
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js" defer></script>
 
     <script>
-            $(document).ready(function(){
-                  var t = $('#table_data').DataTable({
-                        processing: true,
-                        serverSide: true,
-                        "order": [
-                            [0, "asc"],
-                            [1, "asc"],
-                            [2, "asc"],
-                            [3, "asc"],
-                            [4, "asc"],
-                        ],
-                        ajax:{
-                            url: "{{ route('pasien.antrian') }}",
-                        },
+            // $(document).ready(function(){
+            //       var t = $('#table_data').DataTable({
+            //             processing: true,
+            //             serverSide: true,
+            //             "order": [
+            //                 [0, "asc"],
+            //                 [1, "asc"],
+            //                 [2, "asc"],
+            //                 [3, "asc"],
+            //                 [4, "asc"],
+            //             ],
+            //             ajax:{
+            //                 url: "{{ route('pasien.antrian') }}",
+            //             },
 
-                        columnDefs: [
-                            { targets: '_all', visible: true},
-                            {
-                                "targets": 0,
-                                data: 'no_antrian',
-                                name: 'no_antrian'
-                            },
-                            {
-                                "targets": 1,
-                                data: 'ibu.nama',
-                                name: 'ibu.nama'
-                            },
-                            {
-                                "targets": 2,
-                                data: 'nama_poli_tujuan',
-                                name: 'nama_poli_tujuan'
-                            },
-                            {
-                                "targets": 3,
-                                data: 'status',
-                                name: 'status'
-                            },
-                            {
-                                'targets': 4,
-                                data: 'created_at',
-                                name: 'created_at'
-                            }
-                        ],
-                    });
+            //             columnDefs: [
+            //                 { targets: '_all', visible: true},
+            //                 {
+            //                     "targets": 0,
+            //                     data: 'no_antrian',
+            //                     name: 'no_antrian'
+            //                 },
+            //                 {
+            //                     "targets": 1,
+            //                     data: 'ibu.nama',
+            //                     name: 'ibu.nama'
+            //                 },
+            //                 {
+            //                     "targets": 2,
+            //                     data: 'nama_poli_tujuan',
+            //                     name: 'nama_poli_tujuan'
+            //                 },
+            //                 {
+            //                     "targets": 3,
+            //                     data: 'status',
+            //                     name: 'status'
+            //                 },
+            //                 {
+            //                     'targets': 4,
+            //                     data: 'created_at',
+            //                     name: 'created_at'
+            //                 }
+            //             ],
+            //         });
 
-                    $("#table_data tbody").on('click', '.cb-child', function(){
-                         $('input.cb-child').not(this).prop('checked', false);
-                         let yangDiCheck = $("#table_data tbody .cb-child:checked");
-                         let button_non_aktif_status = (yangDiCheck.length>0);
+            //         $("#table_data tbody").on('click', '.cb-child', function(){
+            //              $('input.cb-child').not(this).prop('checked', false);
+            //              let yangDiCheck = $("#table_data tbody .cb-child:checked");
+            //              let button_non_aktif_status = (yangDiCheck.length>0);
 
-                         $("#button_nonaktif_all").prop('disabled', !button_non_aktif_status);
-                         $("#buttonhps_nonaktif_all").prop('disabled', !button_non_aktif_status);
-                    });
-             });
+            //              $("#button_nonaktif_all").prop('disabled', !button_non_aktif_status);
+            //              $("#buttonhps_nonaktif_all").prop('disabled', !button_non_aktif_status);
+            //         });
+            //  });
     </script>
 @endpush
 
