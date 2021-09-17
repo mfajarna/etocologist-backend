@@ -172,7 +172,7 @@ class InputanakController extends Controller
 
             return DataTables::of($data)
             ->addColumn('aksi', function($data){
-                $button = "<button class='btn btn-danger' id='". $data->id ."'>SELESAI</button>";
+                $button = "<button class=' update btn btn-danger' id='". $data->id ."'>SELESAI</button>";
 
                 return $button;
             })
