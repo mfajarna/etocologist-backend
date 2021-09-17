@@ -70,6 +70,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     //Route Poli Ibu
     Route::get('poli-ibu', [InputpasienController::class, 'getData'])->name('inputpasien.data');
     Route::post('edit-poli-ibu',[InputpasienController::class,'editData'])->name('inputpasien.editstatus');
+    Route::post('edit-poli-anak',[InputpasienController::class,'editDataAnak'])->name('inputpasien.editanak');
+
 
     Route::prefix('/poli-ibu')->group(function() {
         //Route Input Data Pasien Ibu

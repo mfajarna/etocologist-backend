@@ -14,6 +14,7 @@ use App\Models\poliibu\Proseskehamilan;
 use App\Models\poliibu\Riwayatkehamilan;
 use Yajra\DataTables\Facades\DataTables;
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\antrian\Antrianpolianak;
 use App\Models\antrian\Antrianpoliibu;
 use App\Models\rujukan\Detailobat;
 use App\Models\rujukan\Detailrujukan;
@@ -304,6 +305,16 @@ class InputpasienController extends Controller
     {
         $id = $request->id;
         $model = Antrianpoliibu::find($id);
+
+        $model->status = "SELESAI";
+
+        $model->save();
+    }
+
+    public function editDataAnak(Request $request)
+    {
+        $id = $request->id;
+        $model = Antrianpolianak::find($id);
 
         $model->status = "SELESAI";
 

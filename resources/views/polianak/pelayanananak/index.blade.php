@@ -124,6 +124,23 @@
                          $("#buttonhps_nonaktif_all").prop('disabled', !button_non_aktif_status);
                     });
              });
+
+            $(document).on('click','.update', function(){
+                 let id = $(this).attr('id');
+
+                 $.ajax({
+                     url : "{{ route('inputpasien.editanak') }}",
+                     type: 'post',
+                     data:{
+                         id: id,
+                         "_token" : "{{csrf_token()}}"
+                     },
+                     success: function(params)
+                     {
+                         $('#table_data').DataTable().ajax.reload()
+                     }
+                 })
+             })
             </script>
 
             @endpush
