@@ -168,7 +168,7 @@ class InputanakController extends Controller
     {
 
         if(request()->ajax()){
-            $data = Antrianpolianak::with('ibu')->latest()->get();
+            $data = Antrianpolianak::with('ibu')->where('status', 'MENUNGGU')->latest()->get();
 
             return DataTables::of($data)
             ->addColumn('aksi', function($data){
