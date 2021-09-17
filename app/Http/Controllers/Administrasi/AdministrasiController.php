@@ -194,7 +194,7 @@ class AdministrasiController extends Controller
         }
 
 
-        return view('Administrasi.antrian',[
+        return view('administrasi.antrian',[
             'model' => $model,
             'polianak' => $antrian_polianak,
             'poliibu' => $antrian_poliibu,
